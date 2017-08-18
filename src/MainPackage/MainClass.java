@@ -1,5 +1,8 @@
 package MainPackage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -40,6 +43,10 @@ public class MainClass extends Application {
 		//Gets the text from the TextFields and parses them into integers
 		int	num1 = toNumInt(numb.getText());
 		int num2 = toNumInt(numb1.getText());
+		
+		List<NumberStore> list = new ArrayList<NumberStore>();
+		
+		list.add(new Multiply(num1, num2));
 		
 		
 	});
