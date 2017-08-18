@@ -32,21 +32,35 @@ public class MainClass extends Application {
 	TextField numb1 = new TextField();
 	
 	
+	String[] s = {
+		"a", "b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"
+	};
+	
 	//Button "apply" is created. The quotes inside the parenthesis is the button's label
 	Button apply = new Button("Apply");
 	
 	
 	//this sets and event for the button apply. Other ways to do buttons are (button).setOnAction((ActionEvent event) ->
+	
 	apply.addEventHandler(ActionEvent.ACTION , ActionEvent -> {
-   
+  
+		for(int i=0; i<= 25; i++) {
+		if(numb.getText().equals(s[i])) {
 		
+			Alert error = new Alert();
+			error.AlertBox();
+		
+			}
+		else {
 		//Gets the text from the TextFields and parses them into integers
-		int	num1 = toNumInt(numb.getText());
-		int num2 = toNumInt(numb1.getText());
-		
-		List<NumberStore> list = new ArrayList<NumberStore>();
-		
-		list.add(new Multiply(num1, num2));
+				int	num1 = toNumInt(numb.getText());
+				int num2 = toNumInt(numb1.getText());
+				
+				List<NumberStore> list = new ArrayList<NumberStore>();
+				
+				list.add(new Multiply(num1, num2));
+			}
+		}
 		
 		
 	});
@@ -55,6 +69,10 @@ public class MainClass extends Application {
 	
 	//Creates new button called Answer
 	Button Answer = new Button("Answer...");
+	
+	Answer.setOnAction(ActionEvent event -> {
+	
+	});
 	
 	//Creates a BorderPane (Scenes need some kind of pane like BorderPane, GridPane, AnchorPane and others.)
 	BorderPane pane = new BorderPane();
