@@ -31,8 +31,8 @@ public class MainClass extends Application {
 	
 	
 	//TextFields are created (this is where you can type whatever) this will be main inserts.
-	TextField numb = new TextField();
-	TextField numb1 = new TextField();
+	TextField numb = new TextField("x");
+	TextField numb1 = new TextField("y");
 	
 	Label boxLabel = new Label("Choose Operation");
 	ChoiceBox<NumberStore> operation = new ChoiceBox<NumberStore>();
@@ -40,7 +40,7 @@ public class MainClass extends Application {
 	
 	
 	String[] s = {
-		"a", "b","c","d"
+		"a", "b","c","d","x","y"
 	};
 	
 	//Button "apply" is created. The quotes inside the parenthesis is the button's label
@@ -53,13 +53,15 @@ public class MainClass extends Application {
 	apply.addEventHandler(ActionEvent.ACTION , ActionEvent -> {
   
 		
-		if(numb.getText().equals(s[0]) || numb.getText().equals(s[1]) || numb.getText().equals(s[2]) || numb.getText().equals(s[3])) {
+		if(numb.getText().equals(s[0]) || numb.getText().equals(s[1]) || numb.getText().equals(s[2]) || numb.getText().equals(s[3]) 
+				|| numb.getText().equals(s[4]) || numb.getText().equals(s[5])) {
 		
 			Alert error = new Alert();
 			error.AlertBox();
 		
 		}
-		else if(numb1.getText().equals(s[0]) || numb1.getText().equals(s[1]) || numb1.getText().equals(s[2]) || numb1.getText().equals(s[3]) )
+		else if(numb1.getText().equals(s[0]) || numb1.getText().equals(s[1]) || numb1.getText().equals(s[2]) 
+				|| numb1.getText().equals(s[3]) || numb.getText().equals(s[4]) || numb.getText().equals(s[5]) )
 		{
 			
 			Alert error = new Alert();
@@ -73,7 +75,12 @@ public class MainClass extends Application {
 				
 				List<NumberStore> list = new ArrayList<NumberStore>();
 				
-				list.add(new Multiply(num1, num2, "Multiply"));
+				list.add(new Addition(num1, num2, "Add : x+y"));
+				list.add(new Subtraction(num1, num2, "Subtract : x-y"));
+				list.add(new Multiply(num1, num2, "Multiply : x*y"));
+				list.add(new Division(num1, num2, "Divide : x/y"));
+				list.add(new SinX(num1, num2, "Sine : (x)sin(y) (Degrees) "));
+				list.add(new CosX(num1, num2, "Cosine : (x)cos(y) (Degrees) "));
 				
 				operation.getItems().clear();
 				operation.getItems().addAll(list);

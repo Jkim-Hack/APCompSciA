@@ -2,13 +2,13 @@ package MainPackage;
 
 public class NumberStore {
 
-	protected double num;
 	protected double num1;
+	protected double num2;
 	protected String Title;
 	
 	public NumberStore(double num1, double num2, String Title) {
-		this.num = num1;
-		this.num1 = num2;
+		this.num1 = num1;
+		this.num2 = num2;
 		this.Title = Title;
 	}
 
