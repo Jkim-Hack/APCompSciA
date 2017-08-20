@@ -81,6 +81,7 @@ public class MainClass extends Application {
 				list.add(new Division(num1, num2, "Divide : x/y"));
 				list.add(new SinX(num1, num2, "Sine : (x)sin(y) (Degrees) "));
 				list.add(new CosX(num1, num2, "Cosine : (x)cos(y) (Degrees) "));
+				list.add(new Loop(num1,num2, "(Factorial of x) * y"));
 				
 				operation.getItems().clear();
 				operation.getItems().addAll(list);
@@ -103,6 +104,9 @@ public class MainClass extends Application {
 		display.displayItems();
 		
 	});
+	
+	
+	
 	
 	//Creates a BorderPane (Scenes need some kind of pane like BorderPane, GridPane, AnchorPane and others.)
 	BorderPane pane = new BorderPane();
