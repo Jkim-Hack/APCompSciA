@@ -3,15 +3,15 @@ package MainPackage;
 public class Multiply extends NumberStore {
 
 	
-	public Multiply(int num1, int num2) {
+	public Multiply(double num1, double num2) {
 		super(num1, num2);
 	}
 	
 	
-	public int MultiplyInt() {
+	public double display() {
 		
 		
-	    int num3 = num*num1;
+	   double num3 = num*num1;
 	    
 	    return num3;
 		
