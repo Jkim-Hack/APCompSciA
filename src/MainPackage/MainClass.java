@@ -20,9 +20,11 @@ public class MainClass extends Application {
 	@Override public void start(Stage primaryStage) {
 		
 	
-	//Creates a vertical box along with its spacing
+	//Creates a vertical boxes along with its spacings
 	VBox box = new VBox();
+	VBox box1 = new VBox();
 	box.setSpacing(10);
+	box1.setSpacing(10);
 	
 	//A new label is created along with the label caption
 	Label lbl = new Label("Insert Number: ");
@@ -34,7 +36,7 @@ public class MainClass extends Application {
 	
 	Label boxLabel = new Label("Choose Operation");
 	ChoiceBox<NumberStore> operation = new ChoiceBox<NumberStore>();
-	
+	operation.setPrefWidth(150);
 	
 	
 	String[] s = {
@@ -71,8 +73,10 @@ public class MainClass extends Application {
 				
 				List<NumberStore> list = new ArrayList<NumberStore>();
 				
-				list.add(new Multiply(num1, num2));
+				list.add(new Multiply(num1, num2, "Multiply"));
 				
+				operation.getItems().clear();
+				operation.getItems().addAll(list);
 				
 			}
 		
@@ -87,7 +91,7 @@ public class MainClass extends Application {
 	
 	Answer.setOnAction((ActionEvent event) -> {
 	
-		Display display = new Display();
+		Display display = new Display(operation.getValue());
 		
 		display.displayItems();
 		
@@ -98,11 +102,14 @@ public class MainClass extends Application {
 	
 	//Sets the BorderPane's left side with the VBox
 	pane.setLeft(box);
-	//Gets VBox's children like its buttons, texts, etc
+	//Sets right side
+	pane.setRight(box1);
+	//Gets VBoxs' children like its buttons, texts, etc
 	box.getChildren().addAll(lbl, numb, numb1, apply);
-	//This sets the padding of each child in the box so that each child doesn't stick to the border of the scene. 
+	box1.getChildren().addAll(boxLabel, operation, Answer);
+	//This sets the padding of each child in the boxes so that each children doesn't stick to the border of the scene. 
 	box.setPadding(new Insets(20));
-	
+	box1.setPadding(new Insets(20));
 	//Creates a new scene or canvas with its parameters of a type of pane, width, height of the Scene
 	Scene scene = new Scene(pane, 500, 500); 
 	//Sets title of the stage
