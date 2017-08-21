@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class MoreNums {
@@ -48,9 +49,11 @@ public class MoreNums {
 		
 		
 		Label label = new Label("" + j);
+		label.setFont(Font.font ("Segoe UI", 24));
 		label.setPadding(new Insets(20));
 		
 		Label label1 = new Label("" + k);
+		label1.setFont(Font.font ("Segoe UI", 24));
 		label1.setPadding(new Insets(20));
 		
 		box.getChildren().addAll(label, label1);

@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Display {
@@ -49,6 +50,7 @@ public void displayItems() {
 	box.setPadding(new Insets(20));
 	
 	Label answer = new Label("" + operation.display());
+	answer.setFont(Font.font ("Segoe UI", 24));
 	answer.setPadding(new Insets(20));
 	
 	BorderPane pane = new BorderPane();
@@ -57,12 +59,13 @@ public void displayItems() {
 	pane.setTop(box);
 	
 	
-	Scene scene = new Scene(pane, 500,450);
+	Scene scene = new Scene(pane, 300,200);
 	
 	stge.setScene(scene);
 	stge.show();
 	
 	
 	}
-	
+
+
 }
