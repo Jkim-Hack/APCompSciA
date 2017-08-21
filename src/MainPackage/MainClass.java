@@ -39,17 +39,19 @@ public class MainClass extends Application {
 	TextField numb = new TextField("x");
 	TextField numb1 = new TextField("y");
 	
-	
+	//Makes new label
 	Label howOld = new Label("What month number were you born in?");
+	//Makes new textbox for inserting month
 	TextField age = new TextField("ex 11");
+	//Makes new button
 	Button predict = new Button("Int to String");
-	
+	//Array of ints with months
 	int[] months = {
 			
 			1,2,3,4,5,6,7,8,9,10,11,12
 			
 	};
-	
+	//On button press get integer from the age textbox and if month is withing the range of the months array the switch statement goes off
 	predict.setOnAction((ActionEvent event) -> {
 		
 		int monthNum = toNumInt(age.getText());
@@ -58,6 +60,8 @@ public class MainClass extends Application {
 				monthNum == months[5] || monthNum == months[6] || monthNum == months[7] || monthNum == months[8] || monthNum == months[9]
 						|| monthNum == months[10] || monthNum == months[11]) {
 		
+		//Makes a switch case with months
+			
 		String month;
 		switch(monthNum) {
 		
@@ -90,10 +94,10 @@ public class MainClass extends Application {
 		
 		
 		}
-		
+		//displays month in string
 		System.out.println(month);
 		}
-		
+	
 		else {
 			
 			Alert alert = new Alert();
