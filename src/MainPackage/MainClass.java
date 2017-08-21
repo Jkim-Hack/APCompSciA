@@ -179,6 +179,10 @@ public class MainClass extends Application {
 			}
 		}
 		else {
+			
+			Sentinel sentinel = new Sentinel();
+			sentinel.Sentinel();
+			
 			//Gets the text from the TextFields and parses them into ints/doubles
 				double num1 = toNumDouble(numb.getText());
 				double num2 = toNumDouble(numb1.getText());
