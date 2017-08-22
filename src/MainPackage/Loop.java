@@ -15,6 +15,9 @@ public class Loop extends NumberStore{
 			num2 = i * num2;	
 			num3 = num2;
 			
+			
+			
+			
 			System.out.println(num3);
 		}
 		
