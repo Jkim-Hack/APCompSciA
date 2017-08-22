@@ -77,7 +77,11 @@ public class MainClass extends Application {
 		//Initialize the String type 'month'.	
 		String month;
 		
-		//Makes a switch case with months with the inserted month number as what case the switch statements are looking for
+		/*
+		Makes a switch case with months with the inserted month number as what case the switch statements are looking for.
+		I got this example from https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html 
+		I was pretty lazy to type all this.
+		*/
 		
 		switch(monthNum) {
 		
