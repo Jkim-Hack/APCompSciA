@@ -1,5 +1,10 @@
 package MainPackage;
 
+/*
+ * This class contains mathematical expressions
+ */
+
+
 public class Multiply extends NumberStore {
 
 	//gets the format from NumberStore and gets all the values from the insert Textfields from the main class

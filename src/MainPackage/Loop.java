@@ -1,5 +1,9 @@
 package MainPackage;
 
+/*
+ * This class contains a for loop and a mathematical expression.
+ */
+
 public class Loop extends NumberStore{
 	
 	//gets the format from NumberStore and gets all the values from the insert Textfields from the main class

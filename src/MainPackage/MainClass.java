@@ -1,5 +1,11 @@
 package MainPackage;
 
+
+/*
+ * This class contains integer and double wrapper class methods, switch statements, arraylist, arrays, nested if statements,
+ * else if statements, and method implementation.
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -335,7 +341,7 @@ public class MainClass extends Application {
 	Scene scene = new Scene(pane, 460, 280); 
 	
 	//Sets title of the stage
-	primaryStage.setTitle("Main Open");
+	primaryStage.setTitle("Dumb Calculator");
 	
 	//Stage adds the scene
     primaryStage.setScene(scene);

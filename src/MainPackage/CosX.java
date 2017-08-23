@@ -1,5 +1,11 @@
 package MainPackage;
 
+
+/*
+ * This class implements Math class methods and mathematical expressions
+ */
+
+
 public class CosX extends NumberStore{
 
 	//gets the format from NumberStore and gets all the values from the insert Textfields from the main class

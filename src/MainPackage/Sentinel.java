@@ -1,5 +1,12 @@
 package MainPackage;
 
+
+ /* 
+  This class contains usage of ints, chars, booleans, sentinel while loops, if/else statement, nested for loops, 
+  and string manipulation.
+ */
+
+
 import java.util.Scanner;
 
 public class Sentinel {
@@ -62,6 +69,11 @@ public class Sentinel {
 		
 		//Prints out the product.
 		System.out.println("The product of the last number and " + number + " is: " + product);
+		
+		//Sets string to "Amazing" then prints out the string then prints out "I am Amazed" with the usage of substring
+		String string = "Amazing";
+		System.out.println(string);
+		System.out.println("I am " + string.substring(0, 4) + "ed");
 		
 		//returns an integer number + number
 		return number + number;

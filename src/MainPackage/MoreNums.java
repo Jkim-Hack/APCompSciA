@@ -1,5 +1,9 @@
 package MainPackage;
 
+/*
+ * This class contains while loops, do-while loops, and Math class method implementation.
+ */
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

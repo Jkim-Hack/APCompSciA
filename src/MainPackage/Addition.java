@@ -1,5 +1,10 @@
 package MainPackage;
 
+/*
+ * This class contains mathematical expressions of addition.
+ */
+
+
 public class Addition extends NumberStore {
 
 	//gets the format from NumberStore and gets all the values from the insert Textfields from the main class
@@ -10,7 +15,7 @@ public class Addition extends NumberStore {
 	//Makes a new display method for this class
 	public double display() {
 		
-	//mathmatical expression addition of two numbers
+	//mathematical expression addition of two numbers
 	   double num3 = num1+num2;
 	    
 	   //returns result

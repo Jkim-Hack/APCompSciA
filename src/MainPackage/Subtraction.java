@@ -1,5 +1,10 @@
 package MainPackage;
 
+/*
+ * This class contains a mathematical expression.
+ */
+
+
 public class Subtraction extends NumberStore {
 
 	//gets the format from NumberStore and gets all the values from the insert Textfields from the main class
@@ -10,7 +15,7 @@ public class Subtraction extends NumberStore {
 	//Makes a new display method for this class
 	public double display() {
 		
-	//Mathmatical expression of subtraction of two numbers
+	//Mathematical expression of subtraction of two numbers
 	   double num3 = num1-num2;
 	
 	   //Return result

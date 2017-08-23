@@ -1,5 +1,9 @@
 package MainPackage;
 
+/*
+ * This contains mathematical expressions and implementation of Math class methods.
+ */
+
 import java.lang.Math;
 
 public class SinX extends NumberStore{
@@ -13,7 +17,7 @@ public class SinX extends NumberStore{
 	//Makes a new display method for this class
 	public double display() {
 		
-		//mathmatical expression first number times the sin(second number)
+		//mathematical expression first number times the sin(second number)
 		double num3 = num1 * Math.sin(num2);
 	
 		//return result
