@@ -73,10 +73,11 @@ public class Sentinel {
 		//Prints out the product.
 		System.out.println("The product of the last number and " + number + " is: " + product);
 		
-		//Sets string to "Amazing" then prints out the string then prints out "I am Amazed 100%" with the usage of substring and promotion
+		//Sets string to "Amazing" then prints out the string then prints out "I am Amazed 100%" with the usage of substring 
+		//and promotion along with .toLowerCase()
 		String string = "Amazing";
 		System.out.println(string);
-		System.out.println("I am " + string.substring(0, 4) + "ed " + percent + "%" );
+		System.out.println("I am " + string.substring(0, 4).toLowerCase() + "ed " + percent + "%" );
 		
 		//returns an integer number + number
 		return number + number;
