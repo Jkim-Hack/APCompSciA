@@ -18,6 +18,9 @@ public class Sentinel {
 		int number = 0; 
 		int product = 0;
 		
+		//double percent promoted integer to double
+		double percent = (double)(100);
+		
 		//Make boolean value L to true
 		boolean L = true;
 		
@@ -70,10 +73,10 @@ public class Sentinel {
 		//Prints out the product.
 		System.out.println("The product of the last number and " + number + " is: " + product);
 		
-		//Sets string to "Amazing" then prints out the string then prints out "I am Amazed" with the usage of substring
+		//Sets string to "Amazing" then prints out the string then prints out "I am Amazed 100%" with the usage of substring and promotion
 		String string = "Amazing";
 		System.out.println(string);
-		System.out.println("I am " + string.substring(0, 4) + "ed");
+		System.out.println("I am " + string.substring(0, 4) + "ed " + percent + "%" );
 		
 		//returns an integer number + number
 		return number + number;
