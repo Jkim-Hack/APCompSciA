@@ -4,12 +4,12 @@ import java.util.*;
 
 public class MainChef {
 
-	String the = "THE";
-	String imgay = "stanley is gay";
 	
 	
 	public static void main(String[] args) {
-		
+		String the = "THE";
+		String imgay = "stanley is gay";
+		System.out.println(imgay);
 	}
 	
 	
