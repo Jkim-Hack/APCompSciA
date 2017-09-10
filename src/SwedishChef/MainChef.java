@@ -7,13 +7,19 @@ public class MainChef {
 	public static void main(String[] args) {
 
 		String a;
-		String b = null;
 		String c = null;
 		String the = "THE";
-		String bork = " Bork Bork Bork";
+		String bork = ". Bork Bork Bork!";
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Input: ");
 		a = scanner.nextLine();
+		
+		System.out.println(convert(a)  + bork.toUpperCase());
+
+	}
+
+	public static String convert(String a) {
+		String b = null;
 		int length = a.length();
 		int i = length;
 		if (a != null) {
@@ -22,22 +28,25 @@ public class MainChef {
 				if ((a.substring(i - 1, i)).equalsIgnoreCase("e")) {
 					if ((a.substring(i - 2, i - 1)).equalsIgnoreCase("h")) {
 						if ((a.substring(i - 3, i - 2)).equalsIgnoreCase("t")) {
-							b = a.replace(a.substring(i - 3, i), "ZEE");
+							 b = a.replace(a.substring(i - 3, i), "ZEE");
 							
 						}
+					}
+
+				}
+				
+				if ((a.substring(i - 1, i)).equalsIgnoreCase("n")) {
+					if ((a.substring(i - 2, i - 1)).equalsIgnoreCase("a")) {
+							b = a.replace(a.substring(i - 2, i), "UN");
+								
 					}
 
 				}
 			}
 
 		}
-		System.out.println(b);
-
+			return b;
 	}
-
-	public static String the(String a) {
-		a = "ZEE";
-		return a;
-
-	}
+	
+	
 }
