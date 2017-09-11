@@ -19,24 +19,30 @@ public class MainChef {
 	}
 
 	public static String convert(String a) {
+		
+		
 		String b = null;
 		int length = a.length();
 		int i = length;
+		
 		if (a != null) {
 			for (i = length; i >= 1; i = i - 1) {
 
 				if ((a.substring(i - 1, i)).equalsIgnoreCase("e")) {
-					if ((a.substring(i - 2, i - 1)).equalsIgnoreCase("h")) {
-						if ((a.substring(i - 3, i - 2)).equalsIgnoreCase("t")) {
+					
+				if ((a.substring(i - 2, i - 1)).equalsIgnoreCase("h")) {
+						
+				if ((a.substring(i - 3, i - 2)).equalsIgnoreCase("t")) {
 							 b = a.replace(a.substring(i - 3, i), "ZEE");
 							
-						}
 					}
-
 				}
+
+			}
 				
 				if ((a.substring(i - 1, i)).equalsIgnoreCase("n")) {
-					if ((a.substring(i - 2, i - 1)).equalsIgnoreCase("a")) {
+				
+				if ((a.substring(i - 2, i - 1)).equalsIgnoreCase("a")) {
 							b = a.replace(a.substring(i - 2, i), "UN");
 								
 					}
