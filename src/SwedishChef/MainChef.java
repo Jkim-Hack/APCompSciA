@@ -12,7 +12,8 @@ public class MainChef {
 		String bork = ". Bork Bork Bork!";
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Input: ");
-		a = scanner.nextLine().toUpperCase();
+//		a = scanner.nextLine().toUpperCase();
+		a = "the an au a";
 		System.out.println(convert(a) + bork.toUpperCase());
 
 	}
@@ -66,37 +67,57 @@ public class MainChef {
 					}
 				}
 			}
-			/*
-			 * for (i = length; i >= 1; i = i - 1) { if ((a.substring(i - 1,
-			 * i)).equalsIgnoreCase("O")) {
-			 * 
-			 * c = b.replace(a.substring(i - 1, i), "U");
-			 * 
-			 * }
-			 * 
-			 * }
-			 */
-		}
-		if (f == null) {
-			if (e == null) {
-				if (d == null) {
-					if (c == null) {
-						if (b == null) {
-							return a;
+
+			for (i = length; i >= 1; i = i - 1) {
+				if ((a.substring(i - 1, i)).equalsIgnoreCase("O")) {
+
+					f = e.replace(a.substring(i - 1, i), "U");
+
+				}
+
+			}
+			for (i = length; i >= 1; i = i - 1) {
+				if ((a.substring(i - 1, i)).equalsIgnoreCase("R")) {
+					if ((a.substring(i - 2, i)).equalsIgnoreCase("I")) {
+						g = f.replace(a.substring(i - 2, i), "UR");
+					}
+				}
+
+			}
+			if (j == null) {
+				if (h == null) {
+					if (g == null) {
+						if (f == null) {
+							if (e == null) {
+								if (d == null) {
+									if (c == null) {
+										if (b == null) {
+											return a;
+										} else {
+											return b;
+										}
+									} else {
+										return c;
+									}
+								} else {
+									return d;
+								}
+							} else {
+								return e;
+							}
 						} else {
-							return b;
+							return f;
 						}
 					} else {
-						return c;
+						return g;
 					}
 				} else {
-					return d;
+					return h;
 				}
 			} else {
-				return e;
+				return j;
 			}
-		} else {
-			return f;
 		}
+		return j;
 	}
 }
