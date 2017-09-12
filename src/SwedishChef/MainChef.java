@@ -56,13 +56,13 @@ public class MainChef {
 			}
 			for (i = length; i >= 1; i = i - 1) {
 				if ((a.substring(i - 1, i)).equalsIgnoreCase("a")) {
-					e = d.replace(a.substring(i - 1, i), "E");
+					d = c.replace(a.substring(i - 1, i), "E");
 				}
 			}
 			for (i = length; i >= 1; i = i - 1) {
 				if ((a.substring(i - 1, i)).equalsIgnoreCase("w")) {
 					if ((a.substring(i - 2, i - 1)).equalsIgnoreCase("o")) {
-						f = e.replace(a.substring(i - 2, i), "OO");
+						e = d.replace(a.substring(i - 2, i), "OO");
 					}
 				}
 			}
