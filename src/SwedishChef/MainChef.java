@@ -47,6 +47,8 @@ public class MainChef {
 					}
 				}
 			}
+			
+			
 			for (i = length; i >= 1; i = i - 1) {
 				if ((a.substring(i - 1, i)).equalsIgnoreCase("u")) {
 					if ((a.substring(i - 2, i - 1)).equalsIgnoreCase("a")) {
