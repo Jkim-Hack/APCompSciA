@@ -145,6 +145,12 @@ public class Tester {
 			else if(substr.matches("(.*)AU(.*)")) {
 				s = s.replaceAll("AU", "OO");
 			}
+			else if(substr.matches("(.*) (.*)")) {
+				//If space - 1 equals E
+				//s = s
+				//else if space - 2 equals EN
+				//replace with EE
+			}
 			//Work on this one vvvv
 			/*
 			if(substr.matches("(.*)A(.*)")) {
