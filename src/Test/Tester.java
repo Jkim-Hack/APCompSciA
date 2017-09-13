@@ -40,35 +40,13 @@ public class Tester {
 						}
 					}
 
-					// if (substr.matches("(.*)THE(.*)")) {
-					// s = s.replaceAll("THE", "ZEE");
-					//
-					// }
-					// }
-					// }
-					// }
-					// }
-					// }
-					// } else if (substr.matches("(.*)TION(.*)")) {
-					// s = s.replaceAll("TION", "SHUN");
-					// } else if (substr.matches("(.*)OW(.*)")) {
-					// s = s.replaceAll("OW", "OO");
-					// } else if (substr.matches("(.*)OW(.*)")) {
-					// s = s.replaceAll("OW", "OO");
-					// } else if (substr.matches("(.*)OW(.*)")) {
-					// s = s.replaceAll("OW", "OO");
-					// } else if (substr.matches("(.*)OW(.*)")) {
-					// s = s.replaceAll("OW", "OO");
-					// } else if (substr.matches("(.*)OW(.*)")) {
-					// s = s.replaceAll("OW", "OO");
-					// } }
-					// }
-					// System.out.print(s.toUpperCase() + bork.toUpperCase());
-					//
-					// }
+					if (substr.matches("(.*)THE(.*)")) {
+						s = s.replaceAll("THE", "ZEE");
 
+					}
 				}
 			}
 		}
+
 	}
 }
