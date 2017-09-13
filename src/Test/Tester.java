@@ -8,21 +8,34 @@ public class Tester {
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.nextLine();
 		String a = null;
+
+		System.out.println("Print: ");
+		String s = scanner.nextLine();
 		String b = null;
-		for (int i = 0; i <= s.length() - 3; i++) {
-			String substr = s.substring(i, i + 3);
+
+		for (int i = 0; i <= s.length() - 4; i++) {
+			String substr = s.substring(i, i + 4);
 			if (substr.matches("(.*)the(.*)")) {
-				a = s.replace(s.substring(i, i + 3), "ZEE");
-				System.out.println(a);
+				System.out.print(" ZEE");
+				b = " ZEE";
 			} else if (substr.matches("(.*)an(.*)")) {
-				b = a.replace(s.substring(i, i + 2), "UN");
-				System.out.println(b);
+				b = " UN";
 			}
 
 		}
+		System.out.println(b);
 	}
 	/*
 	 * public static String convert(String a) {
+	 * 
+	 * >>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git String
+	 * b = null; for (int i = 0; i <= s.length() - 3; i++) { String substr =
+	 * s.substring(i, i + 3); if (substr.matches("(.*)the(.*)")) { a =
+	 * s.replace(s.substring(i, i + 3), "ZEE"); System.out.println(a); } else if
+	 * (substr.matches("(.*)an(.*)")) { b = a.replace(s.substring(i, i + 2), "UN");
+	 * System.out.println(b); }
+	 * 
+	 * } } /* public static String convert(String a) {
 	 * 
 	 * String b = null; String c = null; String d = null; String e = null; String f
 	 * = null; String g = null; String h = null; String j = null; int k = 1; int
