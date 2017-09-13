@@ -5,9 +5,8 @@ import java.util.*;
 public class Tester {
 
 	public static void main(String[] args) {
-//		Scanner scanner = new Scanner(System.in);
-//		String s = scanner.nextLine();
-		String s = "I like the apple and";
+		Scanner scanner = new Scanner(System.in);
+		String s = scanner.nextLine();
 		String a = null;
 		String b = null;
 		for (int i = 0; i <= s.length() - 3; i++) {
