@@ -12,68 +12,15 @@ public class Tester {
 		String bork = ". Bork Bork Bork!";
 
 		// add same thing but have an if statement with just 2 characters.
-			if (s.length() == 1) {
-				for (int i = 0; i <= s.length() - 1; i++) {
-					String substr = s.substring(i, i + 1).toUpperCase();
-				if (substr.matches("(.*)A(.*)")) {
-					if (substr.indexOf("A") != substr.length() - 1) {
-						s = s.replaceAll("A", "E");
-					}
-				
-					} else if (substr.matches("(.*)O(.*)")) {
-						s = s.replaceAll("O", "U");
-						
-					}
+		for (int i = 0; i <= s.length() - 3; i++) {
+			String substr = s.substring(i, i + 3).toUpperCase();
+			if (substr.matches("(.*)THE(.*)")) {
+				s = s.replaceAll("THE", "ZEE");
 			}
+			if(substr.matches("(.*)AN(.*)")) {
+				s = s.replaceAll("AN", "UN");
 			}
-						if (s.length() == 2) {
-							for (int i = 0; i <= s.length() - 2; i++) {
-								String substr = s.substring(i, i + 2).toUpperCase();
-							if (substr.matches("(.*)AN(.*)")) {
-								s = s.replaceAll("AN", "UN");
-							} else if (substr.matches("(.*)AU(.*)")) {
-								s = s.replaceAll("AU", "OO");
-							} else if (substr.matches("(.*)OW(.*)")) {
-								s = s.replaceAll("OW", "OO");
-							} else if (substr.matches("(.*)IR(.*)")) {
-								s = s.replaceAll("IR", "UR");
-							} else if (substr.matches("(.*)O(.*)")) {
-								s = s.replaceAll("O", "U");
-							}
-						
-
-						}
-						}
-						
-						else if (s.length() == 3) {
-							for (int i = 0; i <= s.length() - 3; i++) {
-								String substr = s.substring(i, i + 3).toUpperCase();
-						if (substr.matches("(.*)THE(.*)")) {
-						s = s.replaceAll("THE", "ZEE");
-						if (substr.matches("(.*)AN(.*)")) {
-							s = s.replaceAll("AN", "UN");
-						} else if (substr.matches("(.*)AU(.*)")) {
-							s = s.replaceAll("AU", "OO");
-						} else if (substr.matches("(.*)OW(.*)")) {
-							s = s.replaceAll("OW", "OO");
-						} else if (substr.matches("(.*)IR(.*)")) {
-							s = s.replaceAll("IR", "UR");
-						} else if (substr.matches("(.*)O(.*)")) {
-							s = s.replaceAll("O", "U");
-						}
-						}
-							} 
-						}
-						else if (s.length() == 4) {
-
-						}
-					
-
-					
-	
-			System.out.println(s.toUpperCase()+ bork.toUpperCase());
+		}
+		System.out.println(s.toUpperCase() + bork.toUpperCase());
 	}
 }
-
-				
-		
