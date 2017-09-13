@@ -5,17 +5,8 @@ import java.util.*;
 public class Tester {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-		Scanner scanner = new Scanner(System.in);
-		String s = scanner.nextLine();
-		String a = null;
-
 		System.out.println("Print: ");
-		String s = scanner.nextLine();
-=======
-		
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Print: ");
 		String s = scanner.nextLine();
 		String b = null;
 		
