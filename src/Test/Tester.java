@@ -13,7 +13,9 @@ public class Tester {
 		
 		for (int i = 0; i <= s.length() - 4 ; i++) {
 		    String substr = s.substring(i, i + 4);
-		    if (substr.matches("(.*)the(.*)")) { System.out.print(" ZEE");  b = " ZEE"; }
+		    if (substr.matches("(.*)the(.*)")) { System.out.print(" ZEE");  
+		    b = " ZEE";
+		    }
 		    else if(substr.matches("(.*)an(.*)")) {
 		    	b = " UN";
 		    }
