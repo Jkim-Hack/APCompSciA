@@ -9,9 +9,9 @@ public class Tester {
 		String s = "an the";
 		for (int i = 0; i <= s.length() - 3 ; i++) {
 		    String substr = s.substring(i, i + 3);
-		    if (substr.matches("(.*)the(.*)")) { System.out.println("ZEE"); }
+		    if (substr.matches("(.*)the(.*)")) { System.out.print(" ZEE"); }
 		    else if(substr.matches("(.*)an(.*)")) {
-		    	System.out.println("UN");
+		    	System.out.print(" UN");
 		    }
 		
 		}
