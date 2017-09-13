@@ -5,16 +5,21 @@ import java.util.*;
 public class Tester {
 
 	public static void main(String[] args) {
-
-		String s = "an the";
-		for (int i = 0; i <= s.length() - 3 ; i++) {
-		    String substr = s.substring(i, i + 3);
-		    if (substr.matches("(.*)the(.*)")) { System.out.print(" ZEE"); }
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Print: ");
+		String s = scanner.nextLine();
+		String b = null;
+		
+		for (int i = 0; i <= s.length() - 4 ; i++) {
+		    String substr = s.substring(i, i + 4);
+		    if (substr.matches("(.*)the(.*)")) { System.out.print(" ZEE");  b = " ZEE"; }
 		    else if(substr.matches("(.*)an(.*)")) {
-		    	System.out.print(" UN");
+		    	b = " UN";
 		    }
 		
 		}
+		System.out.println(b);
 	}
 /*
 	public static String convert(String a) {
