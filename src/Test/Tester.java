@@ -46,8 +46,9 @@ public class Tester {
 		else if (s.length() == 2) {
 			for (int i = 0; i <= s.length() - 2; i++) {
 				String substr = s.substring(i, i + 2).toUpperCase();
-				
+				//if the established substring has an AN anywhere
 				if(substr.matches("(.*)AN(.*)")) {
+					//replaces all occurences of AN to UN
 					s = s.replaceAll("AN", "UN");
 				}
 				else if(substr.matches("(.*)AU(.*)")) {
@@ -68,10 +69,12 @@ public class Tester {
 				}
 				
 				else if(substr.matches("(.*)IR(.*)")) {
+				//replacing all IR with UR
 					s = s.replaceAll("IR", "UR");
 				}
 				
 				else if(substr.matches("(.*)EN(.*)")) {
+				//replacing all EN with EE
 					s = s.replaceAll("EN", "EE");
 				}
 				/*
@@ -83,6 +86,7 @@ public class Tester {
 				}
 				*/
 				else if(substr.matches("(.*)W(.*)")) {
+				//replacing all W with V
 					s = s.replace('W', 'V');
 				}
 			}
@@ -109,14 +113,17 @@ public class Tester {
 				}
 			
 			else if(substr.matches("(.*)OW(.*)")) {
+			//replace all OW with OO
 				s = s.replaceAll("OW", "OO");
 			}
 			
 			if(substr.matches("(.*)O(.*)")) {
+			//replacing all O with U 
 				s = s.replace('O', 'U');
 			}
 			
 			else if(substr.matches("(.*)IR(.*)")) {
+			//replacing all IR with UR
 				s = s.replaceAll("IR", "UR");
 			}
 			/*
@@ -128,6 +135,7 @@ public class Tester {
 			}
 			*/
 			else if(substr.matches("(.*)W(.*)")) {
+			//replacing all W with V
 				s = s.replace('W', 'V');
 			}
 		}
@@ -169,8 +177,11 @@ public class Tester {
 			else if(substr.matches("(.*)IR(.*)")) {
 				s = s.replaceAll("IR", "UR");
 			}
+			
 			else if(substr.matches("(.*)TION(.*)")) {
+				//replacing all TION with SHUN
 				s = s.replaceAll("TION", "SHUN");
+			
 			}
 			/*
 			else if(substr.matches("(.*)F(.*)")) {
@@ -181,11 +192,14 @@ public class Tester {
 			}
 			*/
 			else if(substr.matches("(.*)W(.*)")) {
+				//replacing all characters W with V.
 				s = s.replace('W', 'V');
+				
 			}
 			
 			}
 		}
 		System.out.println(s.toUpperCase() + bork.toUpperCase());
+		
 	}
 }
