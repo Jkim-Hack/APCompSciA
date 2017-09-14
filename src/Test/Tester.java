@@ -102,11 +102,14 @@ public class Tester {
 				s = s.replaceAll("AU", "OO");
 			}
 			//Work on this one vvvv
-			/*
-			if(substr.matches("(.*)A(.*)")) {
-				s = s.replaceAll("A", "E");
+		
+			if(!(substr.charAt(substr.length()-1) == "A")) {
+				if(substr.matches("(.*)A(^\\.)")) {
+				s = s.replace('A', 'E');
 			}
-			*/
+				
+			}
+			
 			else if(substr.matches("(.*)OW(.*)")) {
 				s = s.replaceAll("OW", "OO");
 			}
@@ -139,6 +142,9 @@ public class Tester {
 			if (substr.matches("(.*)THE(.*)")) {
 				s = s.replaceAll("THE", "ZEE");
 			}
+			else if(substr.matches("(.*)O(.*)")) {
+				s = s.replace('O', 'U');
+			}
 			else if(substr.matches("(.*)AN(.*)")) {
 				s = s.replaceAll("AN", "UN");
 			}
@@ -161,9 +167,6 @@ public class Tester {
 				s = s.replaceAll("OW", "OO");
 			}
 			
-			else if(substr.matches("(.*)O(.*)")) {
-				s = s.replace('O', 'U');
-			}
 			
 			else if(substr.matches("(.*)IR(.*)")) {
 				s = s.replaceAll("IR", "UR");
