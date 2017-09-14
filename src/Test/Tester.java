@@ -161,7 +161,7 @@ public class Tester {
 				s = s.replaceAll("OW", "OO");
 			}
 			
-			if(substr.matches("(.*)O(.*)")) {
+			else if(substr.matches("(.*)O(.*)")) {
 				s = s.replace('O', 'U');
 			}
 			
