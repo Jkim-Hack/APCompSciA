@@ -91,6 +91,7 @@ public class Tester {
 	else if (s.length() == 3) {
 		for (int i = 0; i <= s.length() - 3; i++) {
 			String substr = s.substring(i, i + 3).toUpperCase();
+			char str;
 			
 			if (substr.matches("(.*)THE(.*)")) {
 				s = s.replaceAll("THE", "ZEE");
@@ -102,13 +103,10 @@ public class Tester {
 				s = s.replaceAll("AU", "OO");
 			}
 			//Work on this one vvvv
-		
-			if(!(substr.charAt(substr.length()-1) == "A")) {
-				if(substr.matches("(.*)A(^\\.)")) {
-				s = s.replace('A', 'E');
-			}
-				
-			}
+//			if((substr.charAt((substr.length())-1))== 'A') {
+				if(substr.matches("(.*)A(^\\ )") || substr.matches("(.*)A(^\\.)")){
+				s = s.replace('A', 'A');
+				}
 			
 			else if(substr.matches("(.*)OW(.*)")) {
 				s = s.replaceAll("OW", "OO");
