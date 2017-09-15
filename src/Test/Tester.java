@@ -28,6 +28,9 @@ public class Tester {
 				}
 				
 				//These cannot go from one letter string into two
+				 * Work on this vvv if(substr.matches("(.*)O(.*)")) { s = s.replace('O', 'U'); }
+				 */
+				// These cannot go from one letter string into two
 			
 				if(substr.matches("(.*)F(.*)")) {
 					s = s.replaceAll("F", "FF");
