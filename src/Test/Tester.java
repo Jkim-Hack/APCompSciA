@@ -8,7 +8,7 @@ public class Tester {
 		System.out.println("Print: ");
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.nextLine();
-		String bork = " Bork Bork Bork!";
+		String bork = ". Bork Bork Bork!";
 
 		//If only one character added
 		if (s.length() == 1) {
