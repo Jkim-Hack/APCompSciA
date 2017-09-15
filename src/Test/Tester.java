@@ -119,6 +119,7 @@ public class Tester {
 				}
 			}
 		}
+<<<<<<< HEAD
 		// If only 4 characters and above added
 		else if (s.length() >= 4) {
 			for (int i = 0; i <= s.length() - 4; i++) {
@@ -140,6 +141,59 @@ public class Tester {
 				// }
 				// s = s.replaceAll("[A]", "E");
 				// }
+=======
+	}
+	//If only 4 characters and above added
+	else if(s.length() >= 4) {
+		for (int i = 0; i <= s.length() - 4; i++) {
+			String substr = s.substring(i, i + 4).toUpperCase();
+			
+			if (substr.matches("(.*)THE(.*)")) {
+				s = s.replaceAll("THE", "ZEE");
+			}
+			else if(substr.matches("(.*)O(.*)")) {
+				s = s.replace('O', 'U');
+			}
+			else if(substr.matches("(.*)AN(.*)")) {
+				s = s.replaceAll("AN", "UN");
+			}
+			else if(substr.matches("(.*)AU(.*)")) {
+				s = s.replaceAll("AU", "OO");
+			}
+		//ignore
+			else if(substr.matches("(.*)A(\\S)(.*)")) {
+				
+				s = s.replaceAll("[A]", "E");
+			}
+			
+			else if(substr.matches("(.*)OW(.*)")) {
+				s = s.replaceAll("OW", "OO");
+			}
+			else if(substr.matches("(.*)IR(.*)")) {
+				s = s.replaceAll("IR", "UR");
+			}
+			else if(substr.matches("(.*)TION(.*)")) {
+				//replacing all TION with SHUN
+				s = s.replaceAll("TION", "SHUN");
+			}
+			//only when EN is next to a period.
+			else if((s.substring(s.length()-1, s.length())).equals(".")) {
+				if((s.substring(s.length()-3, s.length())).equals("EN")){
+					s = s.replaceAll(substr.substring(substr.length()-3, substr.length()-1), "EE");
+				}
+			}
+			/*
+			else if(substr.matches("(.*)F(.*)")) {
+				s = s.replaceAll("F", "FF");
+			}
+			else if(substr.matches("(.*)V(.*)")) {
+				s = s.replaceAll("V", "FF");
+			}
+			*/
+			else if(substr.matches("(.*)W(.*)")) {
+				//replacing all characters W with V.
+				s = s.replace('W', 'V');
+>>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
 				
 				
 					
