@@ -145,71 +145,78 @@ public class MainChef {
 		*/
 
 	//If only 4 characters and above added
-	if(s.length() >= 4) {
-		for(int space = s.indexOf(" "); space >= 0; space = s.indexOf(" ", space + 1)) {
-		for (int i = 0; i <= s.length() - 4; i++) {
-			String substr = s.substring(i, i + 4).toUpperCase();
+		if(s.length() >= 4) {
 			
-			
-			if (substr.matches("(.*)THE(.*)")) {
-				s = s.replaceAll("THE", "ZEE");
-			}
-			else if(substr.matches("(.*)AN(.*)")) {
-				s = s.replaceAll("AN", "UN");
-			}
-			else if(substr.matches("(.*)AU(.*)")) {
-				s = s.replaceAll("AU", "OO");
-			}
-			else if((substr.matches("(.*)A(\\S)(.*)"))) {
-			for (int j = 0; j >= s.length(); j++) {
-				if(((substr.substring(j, s.length()+1)).matches("A(\\S)(.*)"))) {
-				 s = s.replaceFirst("A", "E");
-				} 
-					else if ((substr.substring(space - 1, space)).equals("A")) {
-						s = s;
-				} 
-					else if((substr.endsWith("A."))) {
-						s = s;
+			for (int i = 0; i <= s.length() - 4; i++) {
+				String substr = s.substring(i, i + 4).toUpperCase();
+				
+				
+				if (substr.matches("(.*)THE(.*)")) {
+					s = s.replaceAll("THE", "ZEE");
 				}
-			}
-		}
-		
-			else if(substr.matches("(.*)OW(.*)")) {
-				s = s.replaceAll("OW", "OO");
-			}
-			else if(substr.matches("(.*)IR(.*)")) {
-				s = s.replaceAll("IR", "UR");
-			}
-			else if(substr.matches("(.*)TION(.*)")) {
-				//replacing all TION with SHUN
-				s = s.replaceAll("TION", "SHUN");
-			}
-			//only when EN is next to a period.
-			else if(s.endsWith("EN.")) {
-				s = s.replaceAll(substr.substring(substr.length()-2, substr.length()), "EE");
-			}
-			
-			else if(substr.matches("(.*)F(.*)")) {
-				s = s.replaceAll("F", "FF");
-			}
-			else if(substr.matches("(.*)V(.*)")) {
-				s = s.replaceAll("V", "FF");
-			}
-
-			else if(substr.matches("(.*)O(.*)")) {
-				s = s.replace('O', 'U');
-			}
-			
-			else if(substr.matches("(.*)W(.*)")) {
-				//replacing all characters W with V.
-				s = s.replace('W', 'V');
+				else if(substr.matches("(.*)AN(.*)")) {
+					s = s.replaceAll("AN", "UN");
+				}
+				else if(substr.matches("(.*)AU(.*)")) {
+					s = s.replaceAll("AU", "OO");
+				}
+				
+				else if((substr.matches("(.*)A(\\S)(.*)"))) {
+				for(int space = s.indexOf("\\s"); space >= 0; space = s.indexOf("\\s", space + 1)) {
+						if ((substr.substring(space-1, space)).equals("A")) {
+							s = s.replace((substr.substring(space-1, space)), "a");
+					} 
+						else if((substr.endsWith("A."))) {
+							s = s.replaceAll((substr.substring(substr.length()-2, substr.length()-1)), "a");
+					}
+						else if((substr.matches("(.*)A(\\S)(.*)"))) {
+							 s = s.replaceAll("A", "E");
+					} 
+				}
 				
 			}
 			
-			} 
+			
+				else if(substr.matches("(.*)OW(.*)")) {
+					s = s.replaceAll("OW", "OO");
+				}
+				else if(substr.matches("(.*)IR(.*)")) {
+					s = s.replaceAll("IR", "UR");
+				}
+				else if(substr.matches("(.*)TION(.*)")) {
+					//replacing all TION with SHUN
+					s = s.replaceAll("TION", "SHUN");
+				}
+				//only when EN is next to a period.
+				else if(s.endsWith("EN.")) {
+					s = s.replaceAll(substr.substring(substr.length()-2, substr.length()), "EE");
+				}
+				//how is there a heap space error here? vvv
+				/*
+				else if(substr.matches("(.*)F(.*)")) {
+					String f = s.replace("F", "FF");
+					s = f;
+				}
+				else if(substr.matches("(.*)V(.*)")) {
+					String f = s.replace("V", "FF");
+					s = f;
+				}
+			*/
+				
+				else if(substr.matches("(.*)O(.*)")) {
+					s = s.replace('O', 'U');
+				}
+				
+				else if(substr.matches("(.*)W(.*)")) {
+					//replacing all characters W with V.
+					s = s.replace('W', 'V');
+					
+				}
+				
+				} 
+			
+			}
+			System.out.println(s.toUpperCase() + bork.toUpperCase());
+			
 		}
-		}
-		System.out.println(s.toUpperCase() + bork.toUpperCase());
-		
 	}
-}
