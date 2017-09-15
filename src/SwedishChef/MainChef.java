@@ -160,9 +160,9 @@ public class MainChef {
 			else if(substr.matches("(.*)AU(.*)")) {
 				s = s.replaceAll("AU", "OO");
 			}
-			/* ingore for now
+			
 			else if((substr.matches("(.*)A(\\S)(.*)"))) {
-			for(int space = s.indexOf(" "); space >= 0; space = s.indexOf(" ", space + 1)) {
+			for(int space = s.indexOf("\\s"); space >= 0; space = s.indexOf("\\s", space + 1)) {
 					if ((substr.substring(space-1, space)).equals("A")) {
 						s = s.replace((substr.substring(space-1, space)), "a");
 				} 
@@ -175,7 +175,7 @@ public class MainChef {
 			}
 			
 		}
-		*/
+		
 		
 			else if(substr.matches("(.*)OW(.*)")) {
 				s = s.replaceAll("OW", "OO");
