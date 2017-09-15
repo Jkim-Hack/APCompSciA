@@ -8,7 +8,7 @@ public class Tester {
 		System.out.println("Print: ");
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.nextLine();
-		String bork = ". Bork Bork Bork!";
+		String bork = " Bork Bork Bork!";
 
 		//If only one character added
 		if (s.length() == 1) {
@@ -106,11 +106,11 @@ public class Tester {
 			else if(substr.matches("(.*)AU(.*)")) {
 				s = s.replaceAll("AU", "OO");
 			}
-			//Work on this one vvvv
-//			if((substr.charAt((substr.length())-1))== 'A') {
-				if(substr.matches("(.*)A(^\\ )") || substr.matches("(.*)A(^\\.)")){
-				s = s.replace('A', 'A');
-				}
+			
+			//int p = substr.indexOf('A');
+			else if(substr.matches("(.*)A(\\S)(.*)")) {
+				s = s.replace('A', 'E');
+			}
 			
 			else if(substr.matches("(.*)OW(.*)")) {
 			//replace all OW with OO
@@ -157,18 +157,10 @@ public class Tester {
 			else if(substr.matches("(.*)AU(.*)")) {
 				s = s.replaceAll("AU", "OO");
 			}
-			else if(substr.matches("(.*) (.*)")) {
-				//If space - 1 equals E
-				//s = s
-				//else if space - 2 equals EN
-				//replace with EE
+			else if(substr.matches("(.*)A(\\S)(.*)")) {
+				s = s.replaceAll("(.*)A(\\S)(.*)", "E");
 			}
-			//Work on this one vvvv
-			/*
-			if(substr.matches("(.*)A(.*)")) {
-				s = s.replaceAll("A", "E");
-			}
-			*/
+		
 			else if(substr.matches("(.*)OW(.*)")) {
 				s = s.replaceAll("OW", "OO");
 			}
@@ -181,7 +173,6 @@ public class Tester {
 			else if(substr.matches("(.*)TION(.*)")) {
 				//replacing all TION with SHUN
 				s = s.replaceAll("TION", "SHUN");
-			
 			}
 			/*
 			else if(substr.matches("(.*)F(.*)")) {
