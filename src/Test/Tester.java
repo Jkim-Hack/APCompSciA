@@ -95,7 +95,7 @@ public class Tester {
 	else if (s.length() == 3) {
 		for (int i = 0; i <= s.length() - 3; i++) {
 			String substr = s.substring(i, i + 3).toUpperCase();
-			char str;
+		
 			
 			if (substr.matches("(.*)THE(.*)")) {
 				s = s.replaceAll("THE", "ZEE");
@@ -158,12 +158,14 @@ public class Tester {
 			else if(substr.matches("(.*)AU(.*)")) {
 				s = s.replaceAll("AU", "OO");
 			}
-			/* ignore for now
+		//ignore
 			else if(substr.matches("(.*)A(\\S)(.*)")) {
-				if(substr.length())
+				if((substr.substring(substr.length(), substr.length()+1).equals("."))) {
+					
+				}
 				s = s.replaceAll("[A]", "E");
 			}
-			*/
+			
 			else if(substr.matches("(.*)OW(.*)")) {
 				s = s.replaceAll("OW", "OO");
 			}
