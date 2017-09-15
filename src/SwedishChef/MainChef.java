@@ -188,14 +188,14 @@ public class MainChef {
 			else if(s.endsWith("EN.")) {
 				s = s.replaceAll(substr.substring(substr.length()-2, substr.length()), "EE");
 			}
-			/*
+			
 			else if(substr.matches("(.*)F(.*)")) {
 				s = s.replaceAll("F", "FF");
 			}
 			else if(substr.matches("(.*)V(.*)")) {
 				s = s.replaceAll("V", "FF");
 			}
-			*/
+			
 			
 			else if(substr.matches("(.*)O(.*)")) {
 				s = s.replace('O', 'U');
