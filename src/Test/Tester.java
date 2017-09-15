@@ -55,11 +55,11 @@ public class Tester {
 					s = s.replaceAll("AU", "OO");
 				}
 				//Work on this one vvvv
-			
+			/*
 				else if(substr.matches("(.*)A(.*)")) {
 					s = s.replaceAll("A", "E");
 				}
-			
+			*/
 				else if(substr.matches("(.*)OW(.*)")) {
 					s = s.replaceAll("OW", "OO");
 				}
@@ -108,10 +108,11 @@ public class Tester {
 			}
 			
 			//int p = substr.indexOf('A');
+			/*
 			else if(substr.matches("(.*)A(\\S)(.*)")) {
 				s = s.replace('A', 'E');
 			}
-			
+			*/
 			else if(substr.matches("(.*)OW(.*)")) {
 			//replace all OW with OO
 				s = s.replaceAll("OW", "OO");
@@ -157,19 +158,18 @@ public class Tester {
 			else if(substr.matches("(.*)AU(.*)")) {
 				s = s.replaceAll("AU", "OO");
 			}
+			/* ignore for now
 			else if(substr.matches("(.*)A(\\S)(.*)")) {
-				s = s.replaceAll("(.*)A(\\S)(.*)", "E");
+				if(substr.length())
+				s = s.replaceAll("[A]", "E");
 			}
-		
+			*/
 			else if(substr.matches("(.*)OW(.*)")) {
 				s = s.replaceAll("OW", "OO");
 			}
-			
-			
 			else if(substr.matches("(.*)IR(.*)")) {
 				s = s.replaceAll("IR", "UR");
 			}
-			
 			else if(substr.matches("(.*)TION(.*)")) {
 				//replacing all TION with SHUN
 				s = s.replaceAll("TION", "SHUN");
