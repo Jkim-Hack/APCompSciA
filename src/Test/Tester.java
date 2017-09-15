@@ -164,9 +164,9 @@ public class Tester {
 				else if (substr.matches("(.*)W(.*)")) {
 					// replacing all characters W with V.
 					s = s.replace('W', 'V');}
-					else if (!"".equals(substr.substring(substr.indexOf('A') + 1, substr.indexOf('A') + 2))) {
-						s = s.replaceAll("A", "E");}
-						else {
+					else if (" ".equals(substr.substring(substr.indexOf("A ") + 1, substr.indexOf("A ") + 2))) {
+						s = s.replaceAll("A", "E");
+						} else {
 							s = s;
 				}
 
