@@ -160,11 +160,7 @@ public class Tester {
 			}
 		//ignore
 			else if(substr.matches("(.*)A(\\S)(.*)")) {
-				if((substr.substring(substr.length()-1, substr.length())).equals(".")) {
-					if(((substr.length()-1) == (substr.indexOf("N"))) && ((substr.length()-2) == (substr.indexOf("E")))){
-						
-					}
-				}
+				
 				s = s.replaceAll("[A]", "E");
 			}
 			
@@ -177,6 +173,12 @@ public class Tester {
 			else if(substr.matches("(.*)TION(.*)")) {
 				//replacing all TION with SHUN
 				s = s.replaceAll("TION", "SHUN");
+			}
+			//only when EN is next to a period.
+			else if((s.substring(s.length()-1, s.length())).equals(".")) {
+				if((s.substring(s.length()-3, s.length())).equals("EN")){
+					s = s.replaceAll(substr.substring(substr.length()-3, substr.length()-1), "EE");
+				}
 			}
 			/*
 			else if(substr.matches("(.*)F(.*)")) {
