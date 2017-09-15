@@ -146,7 +146,7 @@ public class MainChef {
 
 	//If only 4 characters and above added
 	if(s.length() >= 4) {
-		for(int space = s.indexOf(" "); space >= 0; space = s.indexOf(" ", space + 1)) {
+		
 		for (int i = 0; i <= s.length() - 4; i++) {
 			String substr = s.substring(i, i + 4).toUpperCase();
 			
@@ -160,18 +160,20 @@ public class MainChef {
 			else if(substr.matches("(.*)AU(.*)")) {
 				s = s.replaceAll("AU", "OO");
 			}
+			
 			else if((substr.matches("(.*)A(\\S)(.*)"))) {
-			for (int j = 0; j >= s.length(); j++) {
-				if(((substr.substring(j, s.length()+1)).matches("A(\\S)(.*)"))) {
-				 s = s.replaceFirst("A", "E");
-				} 
-					else if ((substr.substring(space - 1, space)).equals("A")) {
-						s = s;
+			for(int space = s.indexOf(" "); space >= 0; space = s.indexOf(" ", space + 1)) {
+					if ((substr.substring(space - 1, space)).equals("A")) {
+						s = s.replace((substr.substring(space - 1, space)), "a");
 				} 
 					else if((substr.endsWith("A."))) {
-						s = s;
+						s = s.replaceAll((substr.substring(substr.length()-2, substr.length()-1)), "a");
 				}
+					else if((substr.matches("(.*)A(\\S)(.*)"))) {
+						 s = s.replaceAll("A", "E");
+				} 
 			}
+			
 		}
 		
 			else if(substr.matches("(.*)OW(.*)")) {
@@ -188,12 +190,15 @@ public class MainChef {
 			else if(s.endsWith("EN.")) {
 				s = s.replaceAll(substr.substring(substr.length()-2, substr.length()), "EE");
 			}
+			//how is there a heap space error here? vvv
 			/*
-			else if(substr.matches("(.*)F(.*)")) {
-				s = s.replaceAll("F", "FF");
+			if(substr.matches("(.*)F(.*)")) {
+				String f = s.replace("F", "FF");
+				s = f;
 			}
-			else if(substr.matches("(.*)V(.*)")) {
-				s = s.replaceAll("V", "FF");
+			if(substr.matches("(.*)V(.*)")) {
+				String f = s.replace("V", "FF");
+				s = f;
 			}
 			*/
 			
@@ -208,7 +213,7 @@ public class MainChef {
 			}
 			
 			} 
-		}
+		
 		}
 		System.out.println(s.toUpperCase() + bork.toUpperCase());
 		
