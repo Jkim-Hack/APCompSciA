@@ -8,7 +8,7 @@ public class Tester {
 		System.out.println("Print: ");
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.nextLine();
-		String bork = " Bork Bork Bork!";
+		String bork = ". Bork Bork Bork!";
 
 		//If only one character added
 		if (s.length() == 1) {
@@ -48,7 +48,7 @@ public class Tester {
 				String substr = s.substring(i, i + 2).toUpperCase();
 				//if the established substring has an AN anywhere
 				if(substr.matches("(.*)AN(.*)")) {
-					//replaces all occurences of AN to UN
+					//replaces all occurrences of AN to UN
 					s = s.replaceAll("AN", "UN");
 				}
 				else if(substr.matches("(.*)AU(.*)")) {
@@ -56,7 +56,7 @@ public class Tester {
 				}
 				//Work on this one vvvv
 			
-				else if(substr.matches("(.*)A(.*)")) {
+				else if(substr.matches("(.*)A(\\S)")) {
 					s = s.replaceAll("A", "E");
 				}
 			
@@ -108,7 +108,7 @@ public class Tester {
 			}
 			
 			//int p = substr.indexOf('A');
-			else if(substr.matches("(.*)A(\\S)(.*)")) {
+			else if(substr.matches("(.*)A(\\S)")) {
 				s = s.replace('A', 'E');
 			}
 			
