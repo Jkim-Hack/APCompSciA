@@ -7,7 +7,7 @@ public class Tester {
 	public static void main(String[] args) {
 		System.out.println("Print: ");
 		Scanner scanner = new Scanner(System.in);
-		String s = scanner.nextLine();
+		String s = scanner.nextLine().toUpperCase();
 		String bork = ". Bork Bork Bork!";
 
 		//If only one character added
@@ -158,13 +158,13 @@ public class Tester {
 			else if(substr.matches("(.*)AU(.*)")) {
 				s = s.replaceAll("AU", "OO");
 			}
-		//ignore
-			else if(substr.matches("(.*)A(\\S)(.*)")) {
-				if((substr.substring(substr.length(), substr.length()+1).equals("."))) {
-					
-				}
-				s = s.replaceAll("[A]", "E");
-			}
+//		//ignore
+//			else if(substr.matches("(.*)A(\\S)(.*)")) {
+//				if((substr.substring(substr.length(), substr.length()+1).equals("."))) {
+//					
+//				}
+//				s = s.replaceAll("[A]", "E");
+//			}
 			
 			else if(substr.matches("(.*)OW(.*)")) {
 				s = s.replaceAll("OW", "OO");
