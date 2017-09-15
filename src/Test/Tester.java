@@ -160,8 +160,10 @@ public class Tester {
 			}
 		//ignore
 			else if(substr.matches("(.*)A(\\S)(.*)")) {
-				if((substr.substring(substr.length(), substr.length()+1).equals("."))) {
-					
+				if((substr.substring(substr.length()-1, substr.length())).equals(".")) {
+					if(((substr.length()-1) == (substr.indexOf("N"))) && ((substr.length()-2) == (substr.indexOf("E")))){
+						
+					}
 				}
 				s = s.replaceAll("[A]", "E");
 			}
