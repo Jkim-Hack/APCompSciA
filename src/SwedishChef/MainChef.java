@@ -195,6 +195,9 @@ public class MainChef {
 			else if(substr.matches("(.*)V(.*)")) {
 				s = s.replaceAll("V", "FF");
 			}
+
+		
+		
 			
 			
 			else if(substr.matches("(.*)O(.*)")) {
