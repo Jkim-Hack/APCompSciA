@@ -8,34 +8,34 @@ public class Tester {
 		System.out.println("Print: ");
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.nextLine();
-		String bork = ". Bork Bork Bork!";
-
+		String bork = " Bork Bork Bork!";
+/*
 		//If only one character added
 		if (s.length() == 1) {
 			for (int i = 0; i <= s.length() - 1; i++) {
 				String substr = s.substring(i, i + 1).toUpperCase();
 				
 				//Work on this one vvvv
-				/*
+		
 				if(substr.matches("(.*)A(.*)")) {
 					s = s.replaceAll("A", "E");
 				}
-				*/
+			
 				
 				/*Work on this vvv
 				if(substr.matches("(.*)O(.*)")) {
 					s = s.replace('O', 'U');
 				}
-				*/
+				
 				//These cannot go from one letter string into two
-				/*
+			
 				if(substr.matches("(.*)F(.*)")) {
 					s = s.replaceAll("F", "FF");
 				}
 				else if(substr.matches("(.*)V(.*)")) {
 					s = s.replaceAll("V", "FF");
 				}
-				*/
+		
 				//except this one
 				if(substr.matches("(.*)W(.*)")) {
 					s = s.replace('W', 'V');
@@ -55,11 +55,11 @@ public class Tester {
 					s = s.replaceAll("AU", "OO");
 				}
 				//Work on this one vvvv
-			/*
+			
 				else if(substr.matches("(.*)A(.*)")) {
 					s = s.replaceAll("A", "E");
 				}
-			*/
+		
 				else if(substr.matches("(.*)OW(.*)")) {
 					s = s.replaceAll("OW", "OO");
 				}
@@ -77,14 +77,14 @@ public class Tester {
 				//replacing all EN with EE
 					s = s.replaceAll("EN", "EE");
 				}
-				/*
+				
 				else if(substr.matches("(.*)F(.*)")) {
 					s = s.replaceAll("F", "FF");
 				}
 				else if(substr.matches("(.*)V(.*)")) {
 					s = s.replaceAll("V", "FF");
 				}
-				*/
+				
 				else if(substr.matches("(.*)W(.*)")) {
 				//replacing all W with V
 					s = s.replace('W', 'V');
@@ -108,11 +108,11 @@ public class Tester {
 			}
 			
 			//int p = substr.indexOf('A');
-			/*
+			
 			else if(substr.matches("(.*)A(\\S)(.*)")) {
 				s = s.replace('A', 'E');
 			}
-			*/
+			
 			else if(substr.matches("(.*)OW(.*)")) {
 			//replace all OW with OO
 				s = s.replaceAll("OW", "OO");
@@ -127,30 +127,31 @@ public class Tester {
 			//replacing all IR with UR
 				s = s.replaceAll("IR", "UR");
 			}
-			/*
+			
 			else if(substr.matches("(.*)F(.*)")) {
 				s = s.replaceAll("F", "FF");
 			}
 			else if(substr.matches("(.*)V(.*)")) {
 				s = s.replaceAll("V", "FF");
 			}
-			*/
+			
 			else if(substr.matches("(.*)W(.*)")) {
 			//replacing all W with V
 				s = s.replace('W', 'V');
 			}
 		}
 	}
+		*/
+
 	//If only 4 characters and above added
-	else if(s.length() >= 4) {
+	if(s.length() >= 4) {
+		for(int space = s.indexOf(" "); space >= 0; space = s.indexOf(" ", space + 1)) {
 		for (int i = 0; i <= s.length() - 4; i++) {
 			String substr = s.substring(i, i + 4).toUpperCase();
 			
+			
 			if (substr.matches("(.*)THE(.*)")) {
 				s = s.replaceAll("THE", "ZEE");
-			}
-			else if(substr.matches("(.*)O(.*)")) {
-				s = s.replace('O', 'U');
 			}
 			else if(substr.matches("(.*)AN(.*)")) {
 				s = s.replaceAll("AN", "UN");
@@ -158,12 +159,20 @@ public class Tester {
 			else if(substr.matches("(.*)AU(.*)")) {
 				s = s.replaceAll("AU", "OO");
 			}
-		//ignore
-			else if(substr.matches("(.*)A(\\S)(.*)")) {
-				
-				s = s.replaceAll("[A]", "E");
+			else if((substr.matches("(.*)A(\\S)(.*)"))) {
+			for (int j = 0; j >= s.length(); j++) {
+				if(((substr.substring(j, s.length()+1)).matches("A(\\S)(.*)"))) {
+				 s = s.replaceFirst("A", "E");
+				} 
+					else if ((substr.substring(space - 1, space)).equals("A")) {
+						s = s;
+				} 
+					else if((substr.endsWith("A."))) {
+						s = s;
+				}
 			}
-			
+		}
+		
 			else if(substr.matches("(.*)OW(.*)")) {
 				s = s.replaceAll("OW", "OO");
 			}
@@ -175,10 +184,8 @@ public class Tester {
 				s = s.replaceAll("TION", "SHUN");
 			}
 			//only when EN is next to a period.
-			else if((s.substring(s.length()-1, s.length())).equals(".")) {
-				if((s.substring(s.length()-3, s.length())).equals("EN")){
-					s = s.replaceAll(substr.substring(substr.length()-3, substr.length()-1), "EE");
-				}
+			else if(s.endsWith("EN.")) {
+				s = s.replaceAll(substr.substring(substr.length()-2, substr.length()), "EE");
 			}
 			/*
 			else if(substr.matches("(.*)F(.*)")) {
@@ -188,13 +195,19 @@ public class Tester {
 				s = s.replaceAll("V", "FF");
 			}
 			*/
+			
+			else if(substr.matches("(.*)O(.*)")) {
+				s = s.replace('O', 'U');
+			}
+			
 			else if(substr.matches("(.*)W(.*)")) {
 				//replacing all characters W with V.
 				s = s.replace('W', 'V');
 				
 			}
 			
-			}
+			} 
+		}
 		}
 		System.out.println(s.toUpperCase() + bork.toUpperCase());
 		
