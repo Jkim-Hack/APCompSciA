@@ -160,11 +160,11 @@ public class MainChef {
 			else if(substr.matches("(.*)AU(.*)")) {
 				s = s.replaceAll("AU", "OO");
 			}
-			
+			/* ingore for now
 			else if((substr.matches("(.*)A(\\S)(.*)"))) {
 			for(int space = s.indexOf(" "); space >= 0; space = s.indexOf(" ", space + 1)) {
-					if ((substr.substring(space - 1, space)).equals("A")) {
-						s = s.replace((substr.substring(space - 1, space)), "a");
+					if ((substr.substring(space-1, space)).equals("A")) {
+						s = s.replace((substr.substring(space-1, space)), "a");
 				} 
 					else if((substr.endsWith("A."))) {
 						s = s.replaceAll((substr.substring(substr.length()-2, substr.length()-1)), "a");
@@ -175,6 +175,7 @@ public class MainChef {
 			}
 			
 		}
+		*/
 		
 			else if(substr.matches("(.*)OW(.*)")) {
 				s = s.replaceAll("OW", "OO");
@@ -192,15 +193,15 @@ public class MainChef {
 			}
 			//how is there a heap space error here? vvv
 			/*
-			if(substr.matches("(.*)F(.*)")) {
+			else if(substr.matches("(.*)F(.*)")) {
 				String f = s.replace("F", "FF");
 				s = f;
 			}
-			if(substr.matches("(.*)V(.*)")) {
+			else if(substr.matches("(.*)V(.*)")) {
 				String f = s.replace("V", "FF");
 				s = f;
 			}
-			*/
+		*/
 			
 			else if(substr.matches("(.*)O(.*)")) {
 				s = s.replace('O', 'U');
