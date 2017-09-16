@@ -147,7 +147,7 @@ public class MainChef {
 	//If only 4 characters and above added
 		if(s.length() >= 4) {
 			
-			for (int i = 0; i <= s.length() - 4; i++) {
+			for (int i = 0; i < s.length()-4; i++) {
 				String substr = s.substring(i, i + 4).toUpperCase();
 				
 				
@@ -197,6 +197,16 @@ public class MainChef {
 						}
 					}
 				}
+				else if(substr.matches("(.*)V(.*)")) {
+					s = s.replace("V", "F");
+		
+				}
+				
+				else if(substr.matches("(.*)W(.*)")) {
+					//replacing all characters W with V.
+					s = s.replace('W', 'v');
+					
+				}
 				//how is there a heap space error here? vvv
 				else if(substr.matches("(.*)F(.*)")) {
 					for (int j = 0; j < s.length()-2; j++) {
@@ -239,23 +249,13 @@ public class MainChef {
 					
 					}
 				}
-		
-				
-				else if(substr.matches("(.*)V(.*)")) {
-					s = s.replace("V", "F");
-		
-				}
+	
 			
 				
 				else if(substr.matches("(.*)O(.*)")) {
 					s = s.replace('O', 'U');
 				}
 				
-				else if(substr.matches("(.*)W(.*)")) {
-					//replacing all characters W with V.
-					s = s.replace('W', 'V');
-					
-				}
 				
 				} 
 			
