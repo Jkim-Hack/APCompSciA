@@ -162,19 +162,18 @@ public class MainChef {
 				}
 				
 				else if((substr.matches("(.*)A(\\S)(.*)"))) {
-				for(int space = s.indexOf("\\s"); space >= 0; space = s.indexOf("\\s", space + 1)) {
-						if ((substr.substring(space-1, space)).equals("A")) {
-							s = s.replace((substr.substring(space-1, space)), "a");
-					} 
-						else if((substr.endsWith("A."))) {
-							s = s.replaceAll((substr.substring(substr.length()-2, substr.length()-1)), "a");
+					for (int j = 0; j < s.length(); j++) {
+						
+						if ((s.substring(j, j + 1)).equals("A") && !(s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
+							s = s.substring(0, j) + 'E' + s.substring(j+1);
+							
+							}
+						else if((s.substring(j, j + 1)).equals("A") && (s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
+							s = s.substring(0, j) + 'A' + s.substring(j+1);
+						}
+			
 					}
-						else if((substr.matches("(.*)A(\\S)(.*)"))) {
-							 s = s.replaceAll("A", "E");
-					} 
 				}
-				
-			}
 			
 			
 				else if(substr.matches("(.*)OW(.*)")) {
