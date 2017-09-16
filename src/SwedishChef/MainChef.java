@@ -187,8 +187,15 @@ public class MainChef {
 					s = s.replaceAll("TION", "SHUN");
 				}
 				//only when EN is next to a period.
-				else if(s.endsWith("EN.")) {
-					s = s.replaceAll(substr.substring(substr.length()-2, substr.length()), "EE");
+				else if(substr.matches("(.*)EN(\\S)(.*)")) {
+					for (int j = 0; j < s.length() -2; j++) {
+						if ((s.substring(j, j + 2)).equals("EN") && !(s.substring(j+2, j + 3).equals(" ")|| s.substring(j+2, j + 3).equals("."))) {
+							s = s.substring(0, j) + "EN" + s.substring(j+2);
+							}
+						else if((s.substring(j, j + 2)).equals("EN") && (s.substring(j+2, j + 3).equals(" ")||s.substring(j+2, j + 3).equals("."))) {
+							s = s.substring(0, j) + "EE" + s.substring(j+2);
+						}
+					}
 				}
 				//how is there a heap space error here? vvv
 				/*
@@ -196,11 +203,25 @@ public class MainChef {
 					String f = s.replace("F", "FF");
 					s = f;
 				}
-				else if(substr.matches("(.*)V(.*)")) {
-					String f = s.replace("V", "FF");
-					s = f;
+				*/
+				else if(substr.matches("(.*)E(\\S)(.*)")) {
+					for (int j = 0; j < s.length()-3; j++) {
+						if ((s.substring(j, j + 1)).equals("E") && !(s.substring(j+1, j + 2).equals(" ")|| s.substring(j+1, j + 2).equals("."))) {
+							s = s.substring(0, j) + "E" + s.substring(j+1);
+							}
+						else if((s.substring(j, j + 1)).equals("E") && (s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
+							String l = s.substring(j+2);
+							s = s.substring(0, j+2) + "  " + l;
+							s = s.substring(0, j) + "E-A" + s.substring(j+3);
+						}
+					}
 				}
-			*/
+				
+				else if(substr.matches("(.*)V(.*)")) {
+					s = s.replace("V", "F");
+		
+				}
+			
 				
 				else if(substr.matches("(.*)O(.*)")) {
 					s = s.replace('O', 'U');
