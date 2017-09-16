@@ -152,20 +152,20 @@ public class MainChef {
 				
 				
 				if (substr.matches("(.*)THE(.*)")) {
-					s = s.replaceAll("THE", "ZEE");
+					s = s.replaceAll("THE", "zee");
 				}
 				else if(substr.matches("(.*)AN(.*)")) {
-					s = s.replaceAll("AN", "UN");
+					s = s.replaceAll("AN", "un");
 				}
 				else if(substr.matches("(.*)AU(.*)")) {
-					s = s.replaceAll("AU", "OO");
+					s = s.replaceAll("AU", "oo");
 				}
 				
 				else if((substr.matches("(.*)A(\\S)(.*)"))) {
 					for (int j = 0; j < s.length(); j++) {
 						
 						if ((s.substring(j, j + 1)).equals("A") && !(s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
-							s = s.substring(0, j) + 'E' + s.substring(j+1);
+							s = s.substring(0, j) + 'a' + s.substring(j+1);
 							
 							}
 						else if((s.substring(j, j + 1)).equals("A") && (s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
@@ -177,14 +177,14 @@ public class MainChef {
 			
 			
 				else if(substr.matches("(.*)OW(.*)")) {
-					s = s.replaceAll("OW", "OO");
+					s = s.replaceAll("OW", "oo");
 				}
 				else if(substr.matches("(.*)IR(.*)")) {
-					s = s.replaceAll("IR", "UR");
+					s = s.replaceAll("IR", "ur");
 				}
 				else if(substr.matches("(.*)TION(.*)")) {
 					//replacing all TION with SHUN
-					s = s.replaceAll("TION", "SHUN");
+					s = s.replaceAll("TION", "shun");
 				}
 				//only when EN is next to a period.
 				else if(substr.matches("(.*)EN(\\S)(.*)")) {
@@ -198,7 +198,7 @@ public class MainChef {
 					}
 				}
 				else if(substr.matches("(.*)V(.*)")) {
-					s = s.replace("V", "F");
+					s = s.replace("V", "f");
 		
 				}
 				
@@ -226,7 +226,7 @@ public class MainChef {
 						else if((s.substring(j, j + 1)).equals("E") && (s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
 							String l = s.substring(j+2);
 							s = s.substring(0, j+2) + "  " + l;
-							s = s.substring(0, j) + "E-A" + s.substring(j+3);
+							s = s.substring(0, j) + "e-a" + s.substring(j+3);
 						}
 					}
 				}
@@ -242,7 +242,7 @@ public class MainChef {
 							  else if((s.substring(j, j + 1)).equals("U")) {
 									String l = s.substring(j+1);
 									s = s.substring(0, j+1) + " " + l;
-									s = s.substring(0, j) + "OO" + s.substring(j+2);
+									s = s.substring(0, j) + "oo" + s.substring(j+2);
 								}
 							}
 						
@@ -253,7 +253,7 @@ public class MainChef {
 			
 				
 				else if(substr.matches("(.*)O(.*)")) {
-					s = s.replace('O', 'U');
+					s = s.replace('O', 'u');
 				}
 				
 				
