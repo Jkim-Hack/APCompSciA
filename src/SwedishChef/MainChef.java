@@ -198,12 +198,16 @@ public class MainChef {
 					}
 				}
 				//how is there a heap space error here? vvv
-				/*
 				else if(substr.matches("(.*)F(.*)")) {
-					String f = s.replace("F", "FF");
-					s = f;
+					for (int j = 0; j < s.length()-2; j++) {
+						if((s.substring(j, j + 1)).equals("F")) {
+							String l = s.substring(j+1);
+							s = s.substring(0, j+1) + " " + l;
+							s = s.substring(0, j) + "ff" + s.substring(j+2);
+						}
+					}
 				}
-				*/
+				
 				else if(substr.matches("(.*)E(\\S)(.*)")) {
 					for (int j = 0; j < s.length()-3; j++) {
 						if ((s.substring(j, j + 1)).equals("E") && !(s.substring(j+1, j + 2).equals(" ")|| s.substring(j+1, j + 2).equals("."))) {
