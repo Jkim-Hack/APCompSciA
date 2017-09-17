@@ -32,12 +32,12 @@ public class MainChef {
 				}
 				
 				else if((substr.matches("(.*)A(.*)"))) {
-<<<<<<< HEAD
+
 					Pattern pattern = Pattern.compile(("(.*)A(\\S+)"));
 				    Matcher matcher = pattern.matcher(substr);
 				    int startIndex = matcher.start();
 				    s = s.replaceAll(substr.substring(startIndex, startIndex + 1), "E");
-=======
+
 					for (int j = 0; j < s.length(); j++) {
 						
 						if ((s.substring(j, j + 1)).equals("A") && !(s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
@@ -49,7 +49,7 @@ public class MainChef {
 						}
 			
 					}
->>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
+
 				}
 					
 					//					for (int j = 0; j < s.length(); j++) {
