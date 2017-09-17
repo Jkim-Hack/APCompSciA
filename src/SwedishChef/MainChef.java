@@ -28,11 +28,11 @@ public class MainChef {
 					s = s.replaceAll("AU", "oo");
 				}
 				
-				else if((substr.matches("(.*)A(\\S)(.*)"))) {
+				else if((substr.matches("(.*)A(.*)"))) {
 					for (int j = 0; j < s.length(); j++) {
 						
 						if ((s.substring(j, j + 1)).equals("A") && !(s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
-							s = s.substring(0, j) + 'a' + s.substring(j+1);
+							s = s.substring(0, j) + 'e' + s.substring(j+1);
 							
 							}
 						else if((s.substring(j, j + 1)).equals("A") && (s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
@@ -144,7 +144,12 @@ public class MainChef {
 			
 				
 				else if(substr.matches("(.*)O(.*)")) {
-					s = s.replace('O', 'u');
+					for (int j = 0; j < s.length(); j++) {
+						if ((s.substring(j, j + 1)).equals("O") && !(s.substring(j + 1, j + 2).equals("W"))) {
+							s = s.substring(0, j) + "u" + s.substring(j+1);
+						
+							}
+					}
 				}
 				
 				
