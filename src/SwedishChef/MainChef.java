@@ -54,10 +54,10 @@ public class MainChef {
 					s = s.replaceAll("TION", "shun");
 				}
 				//only when EN is next to a period.
-				else if(substr.matches("(.*)EN(\\S)(.*)")) {
+				else if(substr.matches("(.*)EN(.*)")) {
 					for (int j = 0; j < s.length() -2; j++) {
 						if ((s.substring(j, j + 2)).equals("EN") && !(s.substring(j+2, j + 3).equals(" ")|| s.substring(j+2, j + 3).equals("."))) {
-							s = s.substring(0, j) + "EN" + s.substring(j+2);
+							s = s.substring(0, j) + "en" + s.substring(j+2);
 							}
 						else if((s.substring(j, j + 2)).equals("EN") && (s.substring(j+2, j + 3).equals(" ")||s.substring(j+2, j + 3).equals("."))) {
 							s = s.substring(0, j) + "EE" + s.substring(j+2);
