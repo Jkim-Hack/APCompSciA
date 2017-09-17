@@ -10,144 +10,11 @@ public class MainChef {
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.nextLine();
 		String bork = " Bork Bork Bork!";
-/*
-		//If only one character added
-		if (s.length() == 1) {
-			for (int i = 0; i <= s.length() - 1; i++) {
-				String substr = s.substring(i, i + 1).toUpperCase();
-				
-				//Work on this one vvvv
-		
-				if(substr.matches("(.*)A(.*)")) {
-					s = s.replaceAll("A", "E");
-				}
-			
-				
-				/*Work on this vvv
-				if(substr.matches("(.*)O(.*)")) {
-					s = s.replace('O', 'U');
-				}
-				
-				//These cannot go from one letter string into two
-			
-				if(substr.matches("(.*)F(.*)")) {
-					s = s.replaceAll("F", "FF");
-				}
-				else if(substr.matches("(.*)V(.*)")) {
-					s = s.replaceAll("V", "FF");
-				}
-		
-				//except this one
-				if(substr.matches("(.*)W(.*)")) {
-					s = s.replace('W', 'V');
-				}
-			}
-		}
-		//If only 2 characters added
-		else if (s.length() == 2) {
-			for (int i = 0; i <= s.length() - 2; i++) {
-				String substr = s.substring(i, i + 2).toUpperCase();
-				//if the established substring has an AN anywhere
-				if(substr.matches("(.*)AN(.*)")) {
-					//replaces all occurences of AN to UN
-					s = s.replaceAll("AN", "UN");
-				}
-				else if(substr.matches("(.*)AU(.*)")) {
-					s = s.replaceAll("AU", "OO");
-				}
-				//Work on this one vvvv
-			
-				else if(substr.matches("(.*)A(.*)")) {
-					s = s.replaceAll("A", "E");
-				}
-		
-				else if(substr.matches("(.*)OW(.*)")) {
-					s = s.replaceAll("OW", "OO");
-				}
-				
-				if(substr.matches("(.*)O(.*)")) {
-					s = s.replace('O', 'U');
-				}
-				
-				else if(substr.matches("(.*)IR(.*)")) {
-				//replacing all IR with UR
-					s = s.replaceAll("IR", "UR");
-				}
-				
-				else if(substr.matches("(.*)EN(.*)")) {
-				//replacing all EN with EE
-					s = s.replaceAll("EN", "EE");
-				}
-				
-				else if(substr.matches("(.*)F(.*)")) {
-					s = s.replaceAll("F", "FF");
-				}
-				else if(substr.matches("(.*)V(.*)")) {
-					s = s.replaceAll("V", "FF");
-				}
-				
-				else if(substr.matches("(.*)W(.*)")) {
-				//replacing all W with V
-					s = s.replace('W', 'V');
-				}
-			}
-		}
-	//If only 3 characters added
-	else if (s.length() == 3) {
-		for (int i = 0; i <= s.length() - 3; i++) {
-			String substr = s.substring(i, i + 3).toUpperCase();
-		
-			
-			if (substr.matches("(.*)THE(.*)")) {
-				s = s.replaceAll("THE", "ZEE");
-			}
-			else if(substr.matches("(.*)AN(.*)")) {
-				s = s.replaceAll("AN", "UN");
-			}
-			else if(substr.matches("(.*)AU(.*)")) {
-				s = s.replaceAll("AU", "OO");
-			}
-			
-			//int p = substr.indexOf('A');
-			
-			else if(substr.matches("(.*)A(\\S)(.*)")) {
-				s = s.replace('A', 'E');
-			}
-			
-			else if(substr.matches("(.*)OW(.*)")) {
-			//replace all OW with OO
-				s = s.replaceAll("OW", "OO");
-			}
-			
-			if(substr.matches("(.*)O(.*)")) {
-			//replacing all O with U 
-				s = s.replace('O', 'U');
-			}
-			
-			else if(substr.matches("(.*)IR(.*)")) {
-			//replacing all IR with UR
-				s = s.replaceAll("IR", "UR");
-			}
-			
-			else if(substr.matches("(.*)F(.*)")) {
-				s = s.replaceAll("F", "FF");
-			}
-			else if(substr.matches("(.*)V(.*)")) {
-				s = s.replaceAll("V", "FF");
-			}
-			
-			else if(substr.matches("(.*)W(.*)")) {
-			//replacing all W with V
-				s = s.replace('W', 'V');
-			}
-		}
-	}
-		*/
 
 	//If only 4 characters and above added
 		if(s.length() >= 4) {
 			
-			for (int i = 0; i < s.length()-4; i++) {
+			for (int i = 0; i <= s.length()-4; i++) {
 				String substr = s.substring(i, i + 4).toUpperCase();
 				
 				
@@ -218,14 +85,19 @@ public class MainChef {
 					}
 				}
 				
-				else if(substr.matches("(.*)E(\\S)(.*)")) {
-					for (int j = 0; j < s.length()-3; j++) {
+				else if(substr.matches("(.*)E(.*)")) {
+					for (int j = 0; j < s.length(); j++) {
 						if ((s.substring(j, j + 1)).equals("E") && !(s.substring(j+1, j + 2).equals(" ")|| s.substring(j+1, j + 2).equals("."))) {
-							s = s.substring(0, j) + "E" + s.substring(j+1);
+							s = s.substring(0, j) + "e" + s.substring(j+1);
 							}
-						else if((s.substring(j, j + 1)).equals("E") && (s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
-							String l = s.substring(j+2);
-							s = s.substring(0, j+2) + "  " + l;
+						else if((s.substring(j, j + 1)).equals("E") && (s.substring(j+1, j + 2).equals(" "))) {
+							String l = s.substring(j+1);
+							s = s.substring(0, j+1) + "  " + l;
+							s = s.substring(0, j) + "e-a" + s.substring(j+3);
+						}
+						else if(s.substring(j, j + 1).equals("E") && s.substring(j+1, j + 2).equals(".")) {
+							String l = s.substring(j+1);
+							s = s.substring(0, j+1) + "  " + l;
 							s = s.substring(0, j) + "e-a" + s.substring(j+3);
 						}
 					}
@@ -243,6 +115,25 @@ public class MainChef {
 									String l = s.substring(j+1);
 									s = s.substring(0, j+1) + " " + l;
 									s = s.substring(0, j) + "oo" + s.substring(j+2);
+								}
+							}
+						
+					
+					}
+				}
+				if(substr.matches("(.*)I(\\S)(.*)")) {
+					for (int j = 0; j < s.length()-2; j++) {
+						  if (s.substring(j, j+1).equals(" ") || s.substring(j, j+1).matches("I") ) {
+							  if((s.substring(j+1, j+2).equals("I"))) {
+									s = s.substring(0, j+1) + "I" + s.substring(j+2);
+								}
+							  else if(s.substring(0, j+1).matches("I")){
+								  s = s.substring(0, 0) + "I" + s.substring(j+1);
+							  }
+							  else if((s.substring(j, j + 1)).equals("I")) {
+									String l = s.substring(j+1);
+									s = s.substring(0, j+1) + " " + l;
+									s = s.substring(0, j) + "ee" + s.substring(j+2);
 								}
 							}
 						
