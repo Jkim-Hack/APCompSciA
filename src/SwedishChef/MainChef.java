@@ -11,7 +11,7 @@ public class MainChef {
 
 		System.out.println("Print: ");
 		Scanner scanner = new Scanner(System.in);
-		String s = scanner.nextLine().toUpperCase();
+		String s = scanner.nextLine();
 		String bork = " Bork Bork Bork!";
 
 	//If only 4 characters and above added
@@ -32,12 +32,6 @@ public class MainChef {
 				}
 				
 				else if((substr.matches("(.*)A(.*)"))) {
-
-					Pattern pattern = Pattern.compile(("(.*)A(\\S+)"));
-				    Matcher matcher = pattern.matcher(substr);
-				    int startIndex = matcher.start();
-				    s = s.replaceAll(substr.substring(startIndex, startIndex + 1), "E");
-
 					for (int j = 0; j < s.length(); j++) {
 						
 						if ((s.substring(j, j + 1)).equals("A") && !(s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
@@ -49,21 +43,7 @@ public class MainChef {
 						}
 			
 					}
-
 				}
-					
-					//					for (int j = 0; j < s.length(); j++) {
-//						
-//						if ((s.substring(j, j + 1)).equals("A") && !(s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
-//							s = s.substring(0, j) + 'E' + s.substring(j+1);
-//							
-//							}
-//						else if((s.substring(j, j + 1)).equals("A") && (s.substring(j+1, j + 2).equals(" ")||s.substring(j+1, j + 2).equals("."))) {
-//							s = s.substring(0, j) + 'A' + s.substring(j+1);
-//						}
-//			
-//					}
-				
 			
 			
 				else if(substr.matches("(.*)OW(.*)")) {
