@@ -22,7 +22,7 @@ public class MainChef {
 				.replaceAll("O", "u")
 				.replaceAll("IR", "ur")
 				.replaceAll("TION", "shun")
-				.replaceAll("(\\B)I", "ee")
+				.replaceFirst("(\\B)I", "ee")
 				.replaceAll("EN(\\b)", "ee")
 				.replaceAll("F", "ff")
 				.replaceAll("E(\\b)", "e-a")
