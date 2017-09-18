@@ -14,6 +14,7 @@ public class MainChef {
 		String s = str.toUpperCase();
 		// If only 4 characters and above added
 
+
 		s = s.replaceAll("THE", "zee") 
 				.replaceAll("AN", "un")
 				.replaceAll("AU", "oo")
@@ -21,9 +22,15 @@ public class MainChef {
 				.replaceAll("OW", "oo")
 				.replaceAll("O", "u")
 				.replaceAll("IR", "ur")
-				.replaceAll("TION", "shun")
-				.replaceFirst("(\\B)?I", "ee")
-				.replaceAll("EN(\\b)", "ee")
+				.replaceAll("TION", "shun");
+				
+		String[] strArray = s.split("\\W+");
+		String newStr = strArray[0].replaceAll("(\\w+?)I(.*)", "$1ee$2");
+		for(int i = 1; i < strArray.length; i++) {
+			newStr = newStr + " " + strArray[i].replaceAll("(\\w+?)I(.*)", "$1ee$2");
+		}
+		
+		newStr = newStr.replaceAll("EN(\\b)", "ee")
 				.replaceAll("F", "ff")
 				.replaceAll("E(\\b)", "e-a")
 				.replaceAll("(\\B)U", "oo")
@@ -31,6 +38,6 @@ public class MainChef {
 				.replaceAll("W", "v")
 				.toUpperCase();
 
-		System.out.println(s.toUpperCase() + bork.toUpperCase());
+		System.out.println(newStr.toUpperCase() + bork.toUpperCase());
 	}
 }
