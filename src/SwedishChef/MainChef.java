@@ -10,7 +10,7 @@ public class MainChef {
 		System.out.println("Print: ");
 		Scanner scanner = new Scanner(System.in);
 		String str = scanner.nextLine().toUpperCase();
-		String bork = ". Bork Bork Bork!";
+		String bork = " Bork Bork Bork!";
 		String s = str.toUpperCase();
 		// If only 4 characters and above added
 
@@ -37,7 +37,12 @@ public class MainChef {
 				.replaceAll("V", "f")
 				.replaceAll("W", "v")
 				.toUpperCase();
-
-		System.out.println(newStr.toUpperCase() + bork.toUpperCase());
+		
+		if(!(newStr.matches("(.*)(\\.)"))) {
+			System.out.println(newStr.toUpperCase() + "." + bork.toUpperCase());
+		}
+		else {
+			System.out.println(newStr.toUpperCase() + bork.toUpperCase());
+		}
 	}
 }
