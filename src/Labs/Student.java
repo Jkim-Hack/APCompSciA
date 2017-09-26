@@ -18,7 +18,7 @@ public class Student {
 	// constructor
 	// -----------------------------------------------
 	public Student(String studentName) {
-		// add body of constructor
+		this.name = name;
 	}
 
 	// -----------------------------------------------
@@ -26,7 +26,7 @@ public class Student {
 	// Use name in prompts, e.g., "Enter's Joe's score for test1".
 	// -----------------------------------------------
 	public void inputGrades() {
-		// add body of inputGrades
+		Scanner s = new Scanner(System.in);
 	}
 
 	// -----------------------------------------------
