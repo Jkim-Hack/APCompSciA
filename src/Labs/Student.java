@@ -18,7 +18,7 @@ public class Student {
 	// constructor
 	// -----------------------------------------------
 	public Student(String studentName) {
-		this.name = name;
+		name = studentName;
 	}
 
 	// -----------------------------------------------
@@ -26,25 +26,36 @@ public class Student {
 	// Use name in prompts, e.g., "Enter's Joe's score for test1".
 	// -----------------------------------------------
 	public void inputGrades() {
+		System.out.println("Enter " + name + "score for test1: ");
 		Scanner s = new Scanner(System.in);
-	}
+		String a = s.nextLine();
+		System.out.println("test2: ");
+		Scanner d = new Scanner(System.in);
+		String b = s.nextLine();
+		
+		test1 = Integer.parseInt(a);
+		test2 = Integer.parseInt(b)
+;	}
 
 	// -----------------------------------------------
 	// getAverage: compute and return the student's test average
 	// -----------------------------------------------
 
-	// add header for getAverage
+	public int getAverage()
 	{
-		// add body of getAverage
+		return (test1 + test2)/2;
 	}
 
 	// -----------------------------------------------
-	// getName: print the student's name
+	public String getName()
+	{
+		return name;
+	}
 	// -----------------------------------------------
 
-	// add header for printName
+	public void printName()
 	{
-		// add body of printName
+		System.out.println(name);
 	}
 
 }
