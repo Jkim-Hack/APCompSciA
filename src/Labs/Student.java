@@ -26,12 +26,12 @@ public class Student {
 	// Use name in prompts, e.g., "Enter's Joe's score for test1".
 	// -----------------------------------------------
 	public void inputGrades() {
-		System.out.println("Enter " + name + "score for test1: ");
+		System.out.println("Enter " + name + "'s score for test1: ");
 		Scanner s = new Scanner(System.in);
-		String a = s.nextLine();
+		String a = s.next();
 		System.out.println("test2: ");
 		Scanner d = new Scanner(System.in);
-		String b = s.nextLine();
+		String b = s.next();
 		
 		test1 = Integer.parseInt(a);
 		test2 = Integer.parseInt(b)
@@ -56,6 +56,9 @@ public class Student {
 	public void printName()
 	{
 		System.out.println(name);
+	}
+	public String toString() {
+		return "Name: " + name + "  Test1: " + test1 + "  Test2: " + test2; 
 	}
 
 }
