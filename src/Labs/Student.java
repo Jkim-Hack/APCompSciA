@@ -34,8 +34,8 @@ public class Student {
 		String b = s.next();
 		
 		test1 = Integer.parseInt(a);
-		test2 = Integer.parseInt(b)
-;	}
+		test2 = Integer.parseInt(b);
+	}
 
 	// -----------------------------------------------
 	// getAverage: compute and return the student's test average
@@ -57,6 +57,7 @@ public class Student {
 	{
 		System.out.println(name);
 	}
+	// -----------------------------------------------
 	public String toString() {
 		return "Name: " + name + "  Test1: " + test1 + "  Test2: " + test2; 
 	}
