@@ -9,6 +9,22 @@ public class Doll
 	private String clubName;
 	private String dollName;
 	
+	public String getClubName() {
+		return clubName;
+	}
+
+	public void setClubName(String clubName) {
+		this.clubName = clubName;
+	}
+
+	public String getDollName() {
+		return dollName;
+	}
+
+	public void setDollName(String dollName) {
+		this.dollName = dollName;
+	}
+
 	public Doll(String message, boolean water, String shoe, int numPieces, String club, String name)
 	{
 		secretMessage = message;

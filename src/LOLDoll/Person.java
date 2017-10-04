@@ -31,7 +31,11 @@ public class Person {
 	}
 	public void playWithDoll(String dollName) {
 		String doll = dollName;
-		System.out.println("I will play with" + doll);
+		System.out.println(myName + " will play with " + doll);
+	}
+	public void leaveDoll(String dollName) {
+		String doll = dollName;
+		System.out.println(myName + " will leave " + doll);
 	}
 	
 
