@@ -9,6 +9,8 @@ public class LOLDollMain {
 		Dog d = new Dog();
 		Doll doll = new Doll("The pythagorean theorem is a lie", true, "sneakers", 5, "The club", "Doll");
 		
+		d.setBreed("Corgi");
+	
 		p.playWithDoll(doll.getDollName());
 		System.out.println("\n" + doll.getDollName() + " says: \n" + doll.cries() + "\n" + doll.tinkles() + "\n" + doll.colorChange("Blue") + "\n" + doll.spits());
 		p.laugh();

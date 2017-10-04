@@ -44,7 +44,7 @@ public class Doll
 	{
 		return "Waaaaaaaaaaaaaaaaa!";
 	}
-	
+
 	public String colorChange (String newcolor)
 	{
 		return "My hair color is now "+newcolor;
