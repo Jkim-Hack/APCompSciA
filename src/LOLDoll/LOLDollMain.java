@@ -10,8 +10,9 @@ public class LOLDollMain {
 		Doll doll = new Doll("The pythagorean theorem is a lie", true, "sneakers", 5, "The club", "Doll");
 		
 		p.playWithDoll(doll.getDollName());
-		System.out.println("\n" + doll.getDollName() + " says: \n" + doll.cries() + "\n" + doll.tinkles() + "\n" + doll.colorChange("Blue") + "\n" + doll.spits() + "\n");
-		
+		System.out.println("\n" + doll.getDollName() + " says: \n" + doll.cries() + "\n" + doll.tinkles() + "\n" + doll.colorChange("Blue") + "\n" + doll.spits());
+		p.laugh();
+		System.out.println(" ");
 		p.leaveDoll(doll.getDollName());
 		
 		System.out.println("\n" + d.getName() + " is looking around and is thinking... " + d.find());
