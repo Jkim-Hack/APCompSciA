@@ -12,7 +12,8 @@ public class LOLDollMain {
 		d.setBreed("Corgi");
 	
 		p.playWithDoll(doll.getDollName());
-		System.out.println("\n" + doll.getDollName() + " says: \n" + doll.cries() + "\n" + doll.tinkles() + "\n" + doll.colorChange("Blue") + "\n" + doll.spits());
+		System.out.println("\n" + doll.getDollName() + " says: \n" + doll.cries() + "\n" + doll.tinkles() + "\n" +
+		doll.colorChange("Blue") + "\n" + doll.spits());
 		p.laugh();
 		System.out.println(" ");
 		p.leaveDoll(doll.getDollName());
