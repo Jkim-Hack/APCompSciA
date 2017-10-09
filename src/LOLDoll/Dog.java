@@ -80,17 +80,9 @@ public class Dog {
 		isChildThere = misChildThere;
 	}
 
-	public void poop() {
-		if (isChildThere) {
-			System.out.println("No Poop!");
-		} else {
-			System.out.println("Poop!");
-		}
-
-	}
 
 	public void pee() {
-		if (!(isChildThere)) {
+		if (isChildThere) {
 			System.out.println("No Pee!");
 		} else {
 			System.out.println("Pee!");

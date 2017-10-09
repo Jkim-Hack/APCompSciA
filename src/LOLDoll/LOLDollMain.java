@@ -21,6 +21,7 @@ public class LOLDollMain {
 		System.out.println("\n" + d.getName() + " is looking around and is thinking... " + d.find());
 		d.chew();
 		d.bark();
+		d.pee();
 		
 		System.out.println("\nThe child comes outside after hearing the bark...");
 		d.setisChildThere(true);
