@@ -8,7 +8,11 @@ public class BooleanTest {
 		
 	
 		System.out.println(max(5 , 8, -4));
+		String j = "Lol";
+		j += j;
+		j += j;
 		
+		System.out.println(j);
 		
 	}
 	public static int max(int x, int y, int z) {
