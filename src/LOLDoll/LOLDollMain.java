@@ -4,10 +4,10 @@ public class LOLDollMain {
 
 	public static void main(String[] args) {
 		
-		boolean intellect = true;
-		Person p = new Person("Child", 6, "Asian", "Happy", intellect);
+		boolean intellect = false;
+		Person p = new Person("Tej", 6, "Asian", "Happy", intellect);
 		Dog d = new Dog();
-		Doll doll = new Doll("The pythagorean theorem is a lie", true, "sneakers", 5, "The club", "Doll");
+		Doll doll = new Doll("The pythagorean theorem is a lie", true, "sneakers", 5, "The club", "Abhishek");
 		
 		d.setBreed("Corgi");
 	

@@ -14,6 +14,8 @@ public class Grades {
 		System.out.println("The average grade for " + student2.getName() + " is: " + student2.getAverage());
 		System.out.println(student2.toString());
 		
+		
+		student1.printName();
 	}
 	
 }
