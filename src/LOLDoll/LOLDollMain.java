@@ -27,7 +27,7 @@ public class LOLDollMain {
 		d.setisChildThere(true);
 		d.chew();
 		
-		System.out.println("\nThe child now goes beserk...");
+		System.out.println("\nThe child now goes beserk... ");
 		p.Shout(d.getName());
 		p.cry();
 	}
