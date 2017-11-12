@@ -5,15 +5,20 @@ public class Test2 {
 	
 public static void main(String[] args) {
 	
-	int[] vals = new int[10];
+	final int RANDOM = (int)(Math.random()*100) + 1;
 	
-	for (int i = 0; i < vals.length; i++) {
-		
-	vals[i] = (i +1)*(i+1);
-		
-	System.out.println(vals[i]);
-		
-	}
+	
+		if(RANDOM % 2 == 1) {
+			
+			System.out.println("Tails");
+			
+		}
+		else {
+			
+			System.out.println("Heads");
+			
+		}
+
 	
 	
 }
