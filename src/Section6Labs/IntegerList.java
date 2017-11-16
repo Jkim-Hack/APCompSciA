@@ -35,12 +35,14 @@ public class IntegerList
     
     public void increaseSize(int amt) {
     	
-    	int[] temp = new int[list.length+amt];
+    	//makes temporary array that will be the new amount
     	
+    	int[] temp = new int[list.length+amt];
+    	//goes through and iterates so that all of list is now in temp
     	for(int i = 0; i<list.length; i++) {
     		temp[i] = list[i];
     	}
-    	
+    
     	list = temp;
     	
     	
@@ -48,7 +50,9 @@ public class IntegerList
     
     public void addElement(int newVal) {
     	
-    	
+    	//try-catch statement, the last element + 1 will be the new value, but when 
+    	//the compiler sees that theres an outofbounds exception, it will increase the size of the 
+    	//array by 1 and assigning the new value at the end of the increased array.
     	try {
     		
     	 list[list.length] = newVal;
@@ -64,18 +68,22 @@ public class IntegerList
     
     public void removeFirst(int newVal) {
     	
+    	//iterates through the array
     	for(int i = 0; i < list.length; i++) {
     		
+    		//sees first occurrence
     		if(list[i] == newVal) {
-    		
+    		//wherever the position was found, that position will now be equal to one above it
     			list[i] = list[i+1];
     			
+    			//iterates a second time to make sure every element is shifted one down after the
+    			//removal of the occurrence.
     			for(int j = i+1; j < list.length-1; j++) {
     				
     				list[i+1] = list[j+1];
     				
     			}
-    			
+    			//breaks the statemnt when it is found.
     			break;
     			
     		}
@@ -84,10 +92,10 @@ public class IntegerList
     	}
     	
     }
-    
+    //same thing as above except the break statement is not needed.
     public void removeAll(int newVal) {
     	
-for(int i = 0; i < list.length; i++) {
+    	for(int i = 0; i < list.length; i++) {
     		
     		if(list[i] == newVal) {
     		

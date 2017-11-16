@@ -27,27 +27,31 @@ public class IntegerListTest
 	switch(choice)
 	    {
 	    case 0: 
-		System.out.println("Bye!");
+	    	System.out.println("Bye!");
 		break;
-	    case 1:
+	    case 1:{
 		System.out.println("How big should the list be?");
 		int size = scan.nextInt();
 		list = new IntegerList(size);
 		list.randomize();
-		break;
+		break;}
 	    case 2:
 		list.print();
 		break;
 	    case 3:
 	    int newVal = scan.nextInt();
 	    list.addElement(newVal);
+	    break;
 	    case 4:
 	    int val = scan.nextInt();
 	    list.removeFirst(val);
+	    break;
 	    case 5:
 	    int vals = scan.nextInt();
 	    list.removeAll(vals);
-	   
+	   break;
+	   default:
+		   break;
 	    }
     }
 
