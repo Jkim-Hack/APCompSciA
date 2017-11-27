@@ -4,6 +4,9 @@ public class IntegerList
 {
     int[] list; //values in the list
     private int size;
+    int[] tempor;
+    int p;
+    int l;
 
     //-------------------------------------------------------
     //create a list of the given size
@@ -12,6 +15,9 @@ public class IntegerList
     {
     size = s;	
 	list = new int[size];
+	tempor = new int[size];
+	p = tempor.length;
+	l = list.length;
     }
 
 
@@ -22,6 +28,7 @@ public class IntegerList
     {
 	for (int i=0; i<list.length; i++)
 	    list[i] = (int)(Math.random() * 100) + 1;
+		tempor = list;
     }
 
     //-------------------------------------------------------
@@ -33,12 +40,12 @@ public class IntegerList
 	    System.out.println(i + ":\t" + list[i]);
     }
     
-    public void increaseSize(int amt) {
+    public void increaseSize() {
     	
-    	//makes temporary array that will be the new amount
+    	//Makes temporary array that will be the new amount
     	
-    	int[] temp = new int[list.length+amt];
-    	//goes through and iterates so that all of list is now in temp
+    	int[] temp = new int[list.length*2];
+    	//Goes through and iterates so that all of list is now in temp
     	for(int i = 0; i<list.length; i++) {
     		temp[i] = list[i];
     	}
@@ -51,24 +58,21 @@ public class IntegerList
     public void addElement(int newVal) {
     	
     	//try-catch statement, the last element + 1 will be the new value, but when 
-    	//the compiler sees that theres an outofbounds exception, it will increase the size of the 
-    	//array by 1 and assigning the new value at the end of the increased array.
+    	//the compiler sees that there's an outofbounds exception, it will increase the size of the 
+    	//array times 2 and assigning the new value at the end of the increased array.
     	try {
-    		
-    	 list[list.length] = newVal;
-    		
+    	 list[l] = newVal;
     	} catch (ArrayIndexOutOfBoundsException e) {
-    		
-    		increaseSize(1);
-    		list[list.length-1] = newVal;
-    		
+    		increaseSize();
+    		list[p] = newVal;
+    		p++;
+    		l++;
     	}
-    
     }
     
     public void removeFirst(int newVal) {
     	
-    	//iterates through the array
+    	//Iterates through the array
     	for(int i = 0; i < list.length; i++) {
     		
     		//sees first occurrence
@@ -83,7 +87,7 @@ public class IntegerList
     				list[i+1] = list[j+1];
     				
     			}
-    			//breaks the statemnt when it is found.
+    			//breaks the statement when it is found.
     			break;
     			
     		}

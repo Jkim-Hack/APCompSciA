@@ -63,12 +63,14 @@ public class ShoppingCart
     // ---------------------------------------------------------
     private void increaseSize()
     {
+    	//new temporary item array
     	Item[] temp = new Item[cart.length+3];
     	
+    	//loads in temp with all the cart array items.
     	for(int i = 0; i<cart.length; i++) {
     		temp[i] = cart[i];
     	}
-    	
+    	//all of temp is in cart.
     	cart = temp;
     	
     	

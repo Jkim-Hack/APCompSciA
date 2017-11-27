@@ -4,19 +4,20 @@ public class Test1 {
 
 	public static void main(String[] args) {
 		
-		lol(38);
+		String l = "Happy Halloween!";
+		
+		System.out.println(Test1.testMethod(l));
 		
 		}
 
 
-	public static void lol(int l) {
+	public static String testMethod(String s) {
 		
-		if( l > 4) {
-			lol(l%4);
+		for(int i = 0; i <s.length(); i += 3){
+			s = s.substring(0, i) + "-" + s.substring(i +1);
 		}
 		
-		System.out.print(l/4 + " ");
-		
+		return s;
 	}
 
 }

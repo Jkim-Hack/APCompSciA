@@ -38,19 +38,24 @@ public class IntegerListTest
 	    case 2:
 		list.print();
 		break;
-	    case 3:
+		
+		//added new case to add element
+	    case 3:{
 	    int newVal = scan.nextInt();
 	    list.addElement(newVal);
-	    break;
-	    case 4:
+	    break;}
+	    //added new case to remove element
+	    case 4:{
 	    int val = scan.nextInt();
 	    list.removeFirst(val);
-	    break;
-	    case 5:
+	    break;}
+	    //added new case to remove all
+	    case 5:{
 	    int vals = scan.nextInt();
 	    list.removeAll(vals);
-	   break;
+	   break;}
 	   default:
+		   System.out.println("Haha you messed up");
 		   break;
 	    }
     }
