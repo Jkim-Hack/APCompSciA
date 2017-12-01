@@ -31,7 +31,13 @@ public class Trail
    //JOHN ONLY
    public boolean isLevelTrailSegment(int start, int end)
    { 
-	  
+	  for(int i = start; i <= markers[end]; i++) {
+		  if((markers[i] >= (findMaxElevation(start, end)-10))) {
+			  
+		  }
+	  }
+		  
+		  
       return false;//Here so that the program will compile.
    }
 
@@ -49,7 +55,7 @@ public class Trail
    /** Finds the maximum elevation of the entire trail.
     *  @return the maximum elevation of the entire trail.
     */
-   //JOHN
+   //STANLEY
    public int findMaxElevation()
    {
       return 1;//Here so that the program will compile.
@@ -60,7 +66,7 @@ public class Trail
     * @param end the index of the marker to end at.
     * @return the maximum elevation of the section of trail.
     */
-   //STANLEY
+   //JOHN
    public int findMaxElevation(int start, int end)
    {
       return 1;//Here so that the program will compile.
