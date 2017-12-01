@@ -43,7 +43,21 @@ public class Trail
    //ASHWIN ONLY
    public boolean isDifficult()
    { 
-      return false;//Here so that the program will compile.
+	   int res=0;
+	   for(int i=0; i<markers.length;i++){
+		   int sum =Math.abs(markers[i]-markers[i+1]);
+		   
+		   if(sum==30){
+			   res+=1;
+			   	   }	   
+		    }
+	   if(res>=3){
+		   
+		   return true;
+	   }
+	   else{
+		   return false;
+	   }
    }
 
    /** Finds the maximum elevation of the entire trail.
