@@ -27,6 +27,8 @@ public class Trail
     *  elevation on this segment of the trail is less than or equal to 10 meters;
     *  false otherwise.
     */   
+   
+   //JOHN ONLY
    public boolean isLevelTrailSegment(int start, int end)
    { 
 	  
@@ -38,6 +40,7 @@ public class Trail
     *  with 3 or more such changes is rated difficult.
     *  @return true if the trail is rated difficult; false otherwise.
     */
+   //ASHWIN ONLY
    public boolean isDifficult()
    { 
       return false;//Here so that the program will compile.
@@ -46,6 +49,7 @@ public class Trail
    /** Finds the maximum elevation of the entire trail.
     *  @return the maximum elevation of the entire trail.
     */
+   //JOHN
    public int findMaxElevation()
    {
       return 1;//Here so that the program will compile.
@@ -56,6 +60,7 @@ public class Trail
     * @param end the index of the marker to end at.
     * @return the maximum elevation of the section of trail.
     */
+   //STANLEY
    public int findMaxElevation(int start, int end)
    {
       return 1;//Here so that the program will compile.
@@ -64,6 +69,7 @@ public class Trail
    /** Finds the minimum elevation of the entire trail.
     *  @return the minimum elevation of the entire trail.
     */
+   //OM ONLY
    public int findMinElevation()
    {
       return 1;//Here so that the program will compile.
@@ -74,6 +80,7 @@ public class Trail
     * @param end the index of the marker to end at.
     * @return the minimum elevation of the section of trail.
     */
+   //JESSE ONLY
    public int findMinElevation(int start, int end)
    {
       return 1;//Here so that the program will compile.
