@@ -1,3 +1,6 @@
+package TrailLab;
+
+
 public class TrailTester
 {
    public static void main(String [] args)

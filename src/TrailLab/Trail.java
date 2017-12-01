@@ -1,3 +1,5 @@
+package TrailLab;
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,6 +29,7 @@ public class Trail
     */   
    public boolean isLevelTrailSegment(int start, int end)
    { 
+	  
       return false;//Here so that the program will compile.
    }
 
