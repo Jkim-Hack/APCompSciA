@@ -32,8 +32,12 @@ public class Trail
    public boolean isLevelTrailSegment(int start, int end)
    { 
 	  for(int i = start; i <= markers[end]; i++) {
-		  if((markers[i] >= (findMaxElevation(start, end)-10))) {
-			  
+		  if((markers[i] <= (findMaxElevation(start, end)-10) 
+				  || markers[i] <= (findMinElevation(start, end) + 10))) {
+			  return true;
+		  }
+		  else {
+			  return false;
 		  }
 	  }
 		  
@@ -49,12 +53,18 @@ public class Trail
    //ASHWIN ONLY
    public boolean isDifficult()
    { 
-	   int res=0;
+	   int res = 0;
+	   int sum = 0;
 	   for(int i=0; i<markers.length;i++){
-		   int sum =Math.abs(markers[i]-markers[i+1]);
+		   try {
+		   sum =Math.abs(markers[i]-markers[i+1]);
+		   } catch (ArrayIndexOutOfBoundsException e) {
+			   break;
+		   }
 		   
-		   if(sum==30){
-			   res+=1;
+		   
+		   if(sum>=30){
+			   res++;
 			   	   }	   
 		    }
 	   if(res>=3){
@@ -72,7 +82,14 @@ public class Trail
    //STANLEY
    public int findMaxElevation()
    {
-      return 1;//Here so that the program will compile.
+	   int elevation = 0;
+	   for (int i = 1; i < markers.length; i++) {
+    	  	int value = markers[i - 1];
+		   if(markers[i] > markers[i - 1])
+    	  		value = markers[i];
+		   elevation = value;
+	   }
+      return elevation;//Here so that the program will compile.
    }
    
    /** Finds the maximum elevation of a section of the trail.
