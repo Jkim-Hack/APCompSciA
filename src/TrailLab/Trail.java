@@ -49,21 +49,22 @@ public class Trail
    //ASHWIN ONLY
    public boolean isDifficult()
    { 
-	   int res=0;
-	   for(int i=0; i<markers.length;i++){
-		   int sum =Math.abs(markers[i]-markers[i+1]);
-		   
-		   if(sum==30){
-			   res+=1;
-			   	   }	   
-		    }
-	   if(res>=3){
-		   
-		   return true;
-	   }
-	   else{
-		   return false;
-	   }
+//	   int res=0;
+//	   for(int i=0; i<markers.length;i++){
+//		   int sum =Math.abs(markers[i]-markers[i+1]);
+//		   
+//		   if(sum==30){
+//			   res+=1;
+//			   	   }	   
+//		    }
+//	   if(res>=3){
+//		   
+//		   return true;
+//	   }
+//	   else{
+//		   return false;
+//	   }
+	   return false;
    }
 
    /** Finds the maximum elevation of the entire trail.
@@ -72,7 +73,14 @@ public class Trail
    //STANLEY
    public int findMaxElevation()
    {
-      return 1;//Here so that the program will compile.
+      int elevation = 0;
+	   for (int i = 1; i < markers.length; i++) {
+    	  	int value = markers[i - 1];
+		   if(markers[i] > markers[i - 1])
+    	  		value = markers[i];
+		   elevation = value;
+      }
+	   return elevation;//Here so that the program will compile.
    }
    
    /** Finds the maximum elevation of a section of the trail.
