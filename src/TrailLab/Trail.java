@@ -53,24 +53,6 @@ public class Trail
    //ASHWIN ONLY
    public boolean isDifficult()
    { 
-<<<<<<< HEAD
-//	   int res=0;
-//	   for(int i=0; i<markers.length;i++){
-//		   int sum =Math.abs(markers[i]-markers[i+1]);
-//		   
-//		   if(sum==30){
-//			   res+=1;
-//			   	   }	   
-//		    }
-//	   if(res>=3){
-//		   
-//		   return true;
-//	   }
-//	   else{
-//		   return false;
-//	   }
-	   return false;
-=======
 	   int res = 0;
 	   int sum = 0;
 	   for(int i=0; i<markers.length;i++){
@@ -92,7 +74,6 @@ public class Trail
 	   else{
 		   return false;
 	   }
->>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
    }
 
    /** Finds the maximum elevation of the entire trail.
@@ -101,16 +82,6 @@ public class Trail
    //STANLEY
    public int findMaxElevation()
    {
-<<<<<<< HEAD
-      int elevation = 0;
-	   for (int i = 1; i < markers.length; i++) {
-    	  	int value = markers[i - 1];
-		   if(markers[i] > markers[i - 1])
-    	  		value = markers[i];
-		   elevation = value;
-      }
-	   return elevation;//Here so that the program will compile.
-=======
 	   int elevation = 0;
 	   for (int i = 1; i < markers.length; i++) {
     	  	int value = markers[i - 1];
@@ -119,7 +90,6 @@ public class Trail
 		   elevation = value;
 	   }
       return elevation;//Here so that the program will compile.
->>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
    }
    
    /** Finds the maximum elevation of a section of the trail.
