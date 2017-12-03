@@ -31,18 +31,14 @@ public class Trail
    //JOHN ONLY
    public boolean isLevelTrailSegment(int start, int end)
    { 
-	  for(int i = start; i <= markers[end]; i++) {
-		  if((markers[i] <= (findMaxElevation(start, end)-10) 
-				  || markers[i] <= (findMinElevation(start, end) + 10))) {
+	 
+		  if(findMaxElevation(start, end) - findMinElevation(start, end) == 10) {
 			  return true;
 		  }
 		  else {
 			  return false;
 		  }
-	  }
-		  
-		  
-      return false;//Here so that the program will compile.
+	  
    }
 
    /** Determines if this trail is rated difficult. A trail is rated by counting the number of changes in
@@ -82,14 +78,12 @@ public class Trail
    //STANLEY
    public int findMaxElevation()
    {
-	   int elevation = 0;
-	   for (int i = 1; i < markers.length; i++) {
-    	  	int value = markers[i - 1];
-		   if(markers[i] > markers[i - 1])
-    	  		value = markers[i];
-		   elevation = value;
-	   }
-      return elevation;//Here so that the program will compile.
+	   int elevation = markers[0];
+		for (int i = 0; i < markers.length - 1; i++) {
+			if (elevation < markers[i + 1])
+				elevation = markers[i + 1];
+		}
+		return elevation;
    }
    
    /** Finds the maximum elevation of a section of the trail.
@@ -100,7 +94,15 @@ public class Trail
    //JOHN
    public int findMaxElevation(int start, int end)
    {
-      return 1;//Here so that the program will compile.
+	  int max = 0;
+	  for(int i = start; i <= end; i++) {
+		  if(markers[i] > max) {
+			  
+			  max = markers[i];
+			  
+		  }
+	  }
+      return max;//Here so that the program will compile.
    }
    
    /** Finds the minimum elevation of the entire trail.
@@ -109,7 +111,12 @@ public class Trail
    //OM ONLY
    public int findMinElevation()
    {
-      return 1;//Here so that the program will compile.
+	int elevation = markers[0];
+	for (int i = 0; i < markers.length - 1; i++) {
+		if (elevation > markers[i + 1])
+			elevation = markers[i + 1];
+	}
+	return elevation;
    }
    
    /** Finds the minimum elevation of a section of the trail.
@@ -120,7 +127,15 @@ public class Trail
    //JESSE ONLY
    public int findMinElevation(int start, int end)
    {
-      return 1;//Here so that the program will compile.
+	   int min = markers[start];
+		  for(int i = start; i <= end; i++) {
+			  if(markers[i] < min) {
+				  
+				  min = markers[i];
+				  
+			  }
+		  }
+	      return min;//Here so that the program will compile.
    }
    
    //Do not edit this method. It imports elevations for the trail markers.
