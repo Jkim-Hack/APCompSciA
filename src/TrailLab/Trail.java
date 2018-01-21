@@ -108,7 +108,7 @@ public class Trail
    /** Finds the minimum elevation of the entire trail.
     *  @return the minimum elevation of the entire trail.
     */
-   //OM ONLY
+   //JOHN AND STANLEY ONLY
    public int findMinElevation()
    {
 	int elevation = markers[0];
