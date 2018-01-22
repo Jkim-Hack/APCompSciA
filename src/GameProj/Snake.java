@@ -7,11 +7,24 @@ public class Snake {
 	public Snake(int pix) {
 		
 		for(int i = 1; i <= pix; i++) {
-		snakePix;
+		snakePix[i] = snakePix[i];
 		}
 	}
 	
-	public void move
+	public void moveUp() {
+		
+	}
 	
+	public void moveDown() {
+		
+	}
+
+	public void moveRight() {
+	
+	}
+
+	public void moveLeft() {
+	
+	}
 	
 }
