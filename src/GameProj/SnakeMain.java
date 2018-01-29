@@ -16,7 +16,6 @@ public class SnakeMain extends Application {
 		
 		Scene scene = new Scene(pane, 800, 600);
 		scene.setFill(Color.BLACK);
-		
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
