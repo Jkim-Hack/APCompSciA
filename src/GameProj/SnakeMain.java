@@ -14,7 +14,7 @@ public class SnakeMain extends Application {
 		
 		FlowPane pane = new FlowPane();
 		
-		Scene scene = new Scene(pane, 800,600);
+		Scene scene = new Scene(pane, 800, 600);
 		scene.setFill(Color.BLACK);
 		
 		primaryStage.setScene(scene);
