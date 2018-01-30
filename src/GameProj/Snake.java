@@ -65,7 +65,6 @@ public class Snake {
 			i += 20;
 			
 				snakePix.get(i).setY(cordY + i);
-				snakePix.get(i).setY(cordX + i);
 			
 			
 		}
