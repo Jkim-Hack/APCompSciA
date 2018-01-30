@@ -2,6 +2,7 @@ package GameProj;
 
 import java.util.ArrayList;
 
+import javafx.scene.Parent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
@@ -9,19 +10,25 @@ import javafx.scene.shape.Rectangle;
 public class Snake {
 
 	private ArrayList<Rectangle> snakePix;
-	private Pane positionBoard;
 	private Rectangle body;
 	private int cordX;
 	private int cordY;
 	
-	public Snake(int pix, Pane pane, Rectangle bod) {
+	public Snake(int pix, Rectangle bod) {
 		snakePix = new ArrayList<Rectangle>(3);
 		body = bod;
+		
+		cordX = 300;
+		cordY = 400;
+		
 		for(int i = 0; i < pix; i++) {
 			snakePix.add(i, bod);
+			snakePix.get(i).setY(cordY + i);
+			snakePix.get(i).setY(cordX + i);
 		}
 		
-		positionBoard = pane;
+		
+		
 		
 	}
 	public void setSnake() {
@@ -53,10 +60,13 @@ public class Snake {
 		
 		int i = 0;
 		
-		while(true) {
-		
+		while(i < 600) {
+			
 			i += 20;
-			setCordX(i);
+			
+				snakePix.get(i).setY(cordY + i);
+				snakePix.get(i).setY(cordX + i);
+			
 			
 		}
 		
@@ -72,12 +82,7 @@ public class Snake {
 	public void setSnakePix(ArrayList<Rectangle> snakePix) {
 		this.snakePix = snakePix;
 	}
-	public Pane getPositionBoard() {
-		return positionBoard;
-	}
-	public void setPositionBoard(FlowPane positionBoard) {
-		this.positionBoard = positionBoard;
-	}
+	
 	public Rectangle getBody() {
 		return body;
 	}

@@ -1,6 +1,7 @@
 package GameProj;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
@@ -11,18 +12,19 @@ import javafx.stage.Stage;
 
 public class SnakeMain extends Application {
 
+	
+	public BorderPane pane = new BorderPane();
+	
 	@Override public void start(Stage primaryStage) throws Exception {
 		
-		BorderPane pane = new BorderPane();
+		pane = new BorderPane();
 		
-		Rectangle rect = new Rectangle(100, 100, Color.GREEN);
+		Rectangle rect = new Rectangle(50, 50, Color.GREEN);
 		
-		Snake snake = new Snake(3, pane, rect);
-	
-		for(int i = 0; i<3; i++){
-		snake.getSnakePix().get(i).setLayoutX(200 + i);
-		snake.getSnakePix().get(i).setLayoutY(200 + i);
-		}
+		Snake snake = new Snake(3,rect);
+		
+		pane.setCenter(snake.getSnakePix().get(1));
+		
 		Scene scene = new Scene(pane, 800, 600);
 		scene.setFill(Color.BLACK);
 		
