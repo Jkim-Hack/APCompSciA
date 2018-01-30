@@ -3,18 +3,22 @@ package GameProj;
 import java.util.ArrayList;
 
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
 public class Snake {
 
 	private ArrayList<Rectangle> snakePix;
-	private FlowPane positionBoard;
+	private Pane positionBoard;
 	private Rectangle body;
+	private int cordX;
+	private int cordY;
 	
-	public Snake(int pix, FlowPane pane, Rectangle bod) {
-		
-		for(int i = 1; i <= pix; i++) {
-		snakePix.add(bod);
+	public Snake(int pix, Pane pane, Rectangle bod) {
+		snakePix = new ArrayList<Rectangle>(3);
+		body = bod;
+		for(int i = 0; i < pix; i++) {
+			snakePix.add(i, bod);
 		}
 		
 		positionBoard = pane;
@@ -46,7 +50,17 @@ public class Snake {
 	}
 
 	public void moveRight() {
-	
+		
+		int i = 0;
+		
+		while(true) {
+		
+			i += 20;
+			setCordX(i);
+			
+		}
+		
+		
 	}
 
 	public void moveLeft() {
@@ -58,7 +72,7 @@ public class Snake {
 	public void setSnakePix(ArrayList<Rectangle> snakePix) {
 		this.snakePix = snakePix;
 	}
-	public FlowPane getPositionBoard() {
+	public Pane getPositionBoard() {
 		return positionBoard;
 	}
 	public void setPositionBoard(FlowPane positionBoard) {
@@ -69,6 +83,18 @@ public class Snake {
 	}
 	public void setBody(Rectangle body) {
 		this.body = body;
+	}
+	public int getCordX() {
+		return cordX;
+	}
+	public void setCordX(int cordX) {
+		this.cordX = cordX;
+	}
+	public int getCordY() {
+		return cordY;
+	}
+	public void setCordY(int cordY) {
+		this.cordY = cordY;
 	}
 	
 	
