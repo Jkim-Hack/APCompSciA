@@ -4,58 +4,77 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class SnakeMain extends Application {
 
 	public int addX = 0;
 	public int addY = 0;
-	public BorderPane pane = new BorderPane();
-	public boolean moveRight = false;
-	public boolean moveLeft = false;
-	public boolean moveUp = false;
-	public boolean moveDown = false;
+	public Pane pane = new Pane();
+	public static boolean moveRight = false;
+	public static boolean moveLeft = false;
+	public static boolean moveUp = false;
+	public static boolean moveDown = false;
+	public Label score = new Label();
+	public Label loseLabel = new Label();
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
-		pane = new BorderPane();
-
-		Rectangle rect = new Rectangle(10, 10, Color.GREEN);
-
-		Snake snake = new Snake(3, rect);
-
-		pane.setCenter(snake.getSnakePix().get(0));
-
-		Scene scene = new Scene(pane, 800, 600);
+		
+		Line border1 = new Line(0.0, 0, 800, 0);
+		Line border2 = new Line(0, 0, 0, 600);
+		Line border3 = new Line(800, 0, 800, 600);
+		Line border4 = new Line(0, 600, 800, 600);
+		
+		pane.getChildren().addAll(border1,border2,border3,border4);
+		
+		Rectangle rect = new Rectangle(400, 300, 20, 20);
+		rect.setFill(Color.GREEN);
+		
+		int x = (int)(Math.random()*790) + 1;
+		int y = (int)(Math.random()*590) + 1;
+		
+		Rectangle rectFood = new Rectangle(x , y, 20, 20);
+		rectFood.setFill(Color.BLUE);
+		Snake snake = new Snake(3, pane, rect);
+		Food food = new Food(rectFood, snake.getPane());
+	
+		loseLabel.setTranslateX(90);
+		loseLabel.setTranslateY(200);
+		loseLabel.setFont(Font.font ("Arial", 90));
+		
+		Scene scene = new Scene(snake.getPane(), 800, 600);
 		scene.setFill(Color.BLACK);
 
 		scene.setOnKeyPressed(e -> {
 		
-				if (e.getCode() == KeyCode.RIGHT) {
+				if (e.getCode() == KeyCode.D) {
 					moveRight = true;
 					moveLeft = false;
 					moveUp = false;
 					moveDown = false;
 				}
-				if (e.getCode() == KeyCode.LEFT) {
+				if (e.getCode() == KeyCode.A) {
 					moveRight = false;
 					moveLeft = true;
 					moveUp = false;
 					moveDown = false;
 				}
-				if (e.getCode() == KeyCode.UP) {
+				if (e.getCode() == KeyCode.W) {
 					moveRight = false;
 					moveLeft = false;
 					moveUp = true;
 					moveDown = false;
 				}
-				if (e.getCode() == KeyCode.DOWN) {
+				if (e.getCode() == KeyCode.S) {
 					moveRight = false;
 					moveLeft = false;
 					moveUp = false;
@@ -70,33 +89,57 @@ public class SnakeMain extends Application {
 			@Override
 			public void handle(long now) {
 			if(moveRight) {
-				addX+=1;
+				addX+=10;
 				snake.setCordX(addX);
-				snake.moveRight();
+				snake.moveX();
 			}
 			if(moveLeft) {
-				addX-=1;
+				addX-=10;
 				snake.setCordX(addX);
-				snake.moveRight();
+				snake.moveX();
 			}
 			if(moveUp) {
-				addY+=1;
-				addX = 0;
-				snake.setCordX(addX);
-				snake.moveRight();
+				addY-=10;
+				snake.setCordY(addY);
+				snake.moveY();
 			}
 			if(moveDown) {
-				addX = 0;
-				addY -= 1;
-				snake.setCordX(addX);
-				snake.moveRight();
+				addY += 10;
+				snake.setCordY(addY);
+				snake.moveY();
 			}
 
+			if(snake.getHead().getBoundsInParent().intersects(
+					food.getPickup().getBoundsInParent())) {
+				
+				int x = (int)(Math.random()*790) + 1;
+				int y = (int)(Math.random()*590) + 1;
+				
+				food.setLocation(x, y);
+				snake.addCounter();
+				score.setText("Score: "+snake.getCounter());
+				
+			}
+			if(snake.getHead().getBoundsInParent().intersects(border1.getBoundsInParent())||
+					snake.getHead().getBoundsInParent().intersects(border2.getBoundsInParent())||
+					snake.getHead().getBoundsInParent().intersects(border3.getBoundsInParent())||
+					snake.getHead().getBoundsInParent().intersects(border4.getBoundsInParent())){
+				
+				snake.getHead().setVisible(false);
+				food.getPickup().setVisible(false);
+				loseLabel.setText("You SUCK!!! " + "\nScore: " + snake.getCounter());
+				
+			}
+			
 		}
 
 	};animate.start();
 
-	primaryStage.setScene(scene);primaryStage.show();
+	pane.getChildren().add(score);
+	pane.getChildren().add(loseLabel);
+	
+	primaryStage.setScene(scene);
+	primaryStage.show();
 
 	}
 
