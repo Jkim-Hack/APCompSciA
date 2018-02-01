@@ -2,8 +2,11 @@ package GameProj;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
@@ -18,14 +21,18 @@ public class SnakeMain extends Application {
 
 	public int addX = 0;
 	public int addY = 0;
-	public Pane pane = new Pane();
+	public double multX = 10;
+	public double multY = 10;
+	public static Pane pane = new Pane();
 	public static boolean moveRight = false;
 	public static boolean moveLeft = false;
 	public static boolean moveUp = false;
 	public static boolean moveDown = false;
 	public Label score = new Label();
 	public Label loseLabel = new Label();
-
+	public AnimationTimer animate;
+	public Button restart;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
@@ -44,14 +51,15 @@ public class SnakeMain extends Application {
 		
 		Rectangle rectFood = new Rectangle(x , y, 20, 20);
 		rectFood.setFill(Color.BLUE);
-		Snake snake = new Snake(3, pane, rect);
-		Food food = new Food(rectFood, snake.getPane());
+		Snake snake = new Snake(3,rect);
+		snake.addHead();
+		Food food = new Food(rectFood, pane);
 	
 		loseLabel.setTranslateX(90);
 		loseLabel.setTranslateY(200);
 		loseLabel.setFont(Font.font ("Arial", 90));
 		
-		Scene scene = new Scene(snake.getPane(), 800, 600);
+		Scene scene = new Scene(pane, 800, 600);
 		scene.setFill(Color.BLACK);
 
 		scene.setOnKeyPressed(e -> {
@@ -80,31 +88,96 @@ public class SnakeMain extends Application {
 					moveUp = false;
 					moveDown = true;
 				}
+				if (e.getCode() == KeyCode.RIGHT) {
+					moveRight = true;
+					moveLeft = false;
+					moveUp = false;
+					moveDown = false;
+				}
+				if (e.getCode() == KeyCode.LEFT) {
+					moveRight = false;
+					moveLeft = true;
+					moveUp = false;
+					moveDown = false;
+				}
+				if (e.getCode() == KeyCode.UP) {
+					moveRight = false;
+					moveLeft = false;
+					moveUp = true;
+					moveDown = false;
+				}
+				if (e.getCode() == KeyCode.DOWN) {
+					moveRight = false;
+					moveLeft = false;
+					moveUp = false;
+					moveDown = true;
+				}
 			
 				
 		});
 
-		AnimationTimer animate = new AnimationTimer() {
+		
+		Task<Void> RestartTask = new Task<Void>() {
+
+			@Override
+			protected Void call() throws Exception {
+				
+				snake.addHead();
+				snake.setCordX(0);
+				snake.setCordY(0);
+				addX = 0;
+				addY = 0;
+				pane.getChildren().add(food.getPickup());
+				pane.getChildren().remove(loseLabel);
+				snake.setCounter(0);
+				
+				return null;
+			}
+			
+		};
+		
+		
+		restart = new Button("Restart?");
+		restart.setTranslateX(400);
+		restart.setTranslateY(500);
+		
+		restart.addEventHandler(ActionEvent.ACTION, ActionEvent ->{
+			
+			Thread t = new Thread(RestartTask);
+			t.setDaemon(true);
+			t.start();
+			
+		});
+		
+		RestartTask.setOnSucceeded(event -> {
+			pane.getChildren().remove(restart);
+			animate.start();
+			
+		});
+		
+		
+		 animate = new AnimationTimer() {
 
 			@Override
 			public void handle(long now) {
+			pane.getChildren().remove(restart);
 			if(moveRight) {
-				addX+=10;
+				addX+=multX;
 				snake.setCordX(addX);
 				snake.moveX();
 			}
 			if(moveLeft) {
-				addX-=10;
+				addX-=multX;
 				snake.setCordX(addX);
 				snake.moveX();
 			}
 			if(moveUp) {
-				addY-=10;
+				addY-=multY;
 				snake.setCordY(addY);
 				snake.moveY();
 			}
 			if(moveDown) {
-				addY += 10;
+				addY += multY;
 				snake.setCordY(addY);
 				snake.moveY();
 			}
@@ -112,11 +185,17 @@ public class SnakeMain extends Application {
 			if(snake.getHead().getBoundsInParent().intersects(
 					food.getPickup().getBoundsInParent())) {
 				
-				int x = (int)(Math.random()*790) + 1;
-				int y = (int)(Math.random()*590) + 1;
+				int x = (int)(Math.random()*770) + 1;
+				int y = (int)(Math.random()*570) + 1;
 				
 				food.setLocation(x, y);
 				snake.addCounter();
+				
+				if(snake.getCounter() % 10 == 0) {
+					multX*=1.25;
+					multY*=1.25;
+				}
+				
 				score.setText("Score: "+snake.getCounter());
 				
 			}
@@ -125,18 +204,24 @@ public class SnakeMain extends Application {
 					snake.getHead().getBoundsInParent().intersects(border3.getBoundsInParent())||
 					snake.getHead().getBoundsInParent().intersects(border4.getBoundsInParent())){
 				
-				snake.getHead().setVisible(false);
-				food.getPickup().setVisible(false);
+				snake.removeHead();
+				pane.getChildren().remove(food.getPickup());
+				pane.getChildren().add(loseLabel);
 				loseLabel.setText("You SUCK!!! " + "\nScore: " + snake.getCounter());
-				
+				restart.setVisible(true);
+				restart.setDisable(false);
+				pane.getChildren().add(restart);
+				animate.stop();
 			}
 			
 		}
 
-	};animate.start();
-
+	};
+	animate.start();
+	
+	
+	
 	pane.getChildren().add(score);
-	pane.getChildren().add(loseLabel);
 	
 	primaryStage.setScene(scene);
 	primaryStage.show();

@@ -15,25 +15,29 @@ public class Snake {
 	private Rectangle head;
 	private int cordX;
 	private int cordY;
-	private Pane pane;
 	private int counter;
 
-	public Snake(int pix, Pane pane1, Rectangle bod) {
+	public Snake(int pix, Rectangle bod) {
 		snakePix = new ArrayList<Rectangle>(pix);
 		body = bod;
 		head = bod;
-		pane = pane1;
 		counter = 0;
 		for (int i = 0; i < pix; i++) {
 			snakePix.add(i, bod);
 		}
-		addHead();
 
 	}
 
 	public void addHead() {
 
-		pane.getChildren().add(head);
+		head.setX(400);
+		head.setY(300);
+		SnakeMain.pane.getChildren().add(head);
+
+	}
+	public void removeHead() {
+
+		SnakeMain.pane.getChildren().remove(head);
 
 	}
 
@@ -83,14 +87,6 @@ public class Snake {
 
 	public void setCordY(int cordY) {
 		this.cordY = cordY;
-	}
-
-	public Pane getPane() {
-		return pane;
-	}
-
-	public void setPane(Pane pane) {
-		this.pane = pane;
 	}
 
 	public Rectangle getHead() {
