@@ -56,7 +56,7 @@ public class SnakeMain extends Application {
 
 		Rectangle rect = new Rectangle(400, 300, 20, 20);
 		rect.setFill(Color.GREEN);
-
+ 
 		int x = (int) (Math.random() * 750) + 1;
 		int y = (int) (Math.random() * 500) + 1;
 
