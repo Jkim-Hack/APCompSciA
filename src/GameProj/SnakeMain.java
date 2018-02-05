@@ -19,7 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 <<<<<<< HEAD
-import javafx.scene.image.Image;
+import javafx.scene.image.Image; 
 import javafx.scene.image.ImageView;
 =======
 >>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
