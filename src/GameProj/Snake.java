@@ -32,7 +32,11 @@ public class Snake {
 
 		head.setX(400);
 		head.setY(300);
+<<<<<<< HEAD
 	SnakeMain.pane.getChildren().add(head);
+=======
+		SnakeMain.pane.getChildren().add(head);
+>>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
 
 	}
 	public void removeHead() {
@@ -107,4 +111,8 @@ public class Snake {
 	
 	
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git

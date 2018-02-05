@@ -2,6 +2,9 @@ package GameProj;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
+
 public class Food {
 
 	private Rectangle pickup;
