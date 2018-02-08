@@ -65,13 +65,9 @@ public class SnakeMain extends Application {
 		selectedImage.setImage(image1);
 		pane.getChildren().addAll(selectedImage);
 
-		Media hit = new Media(new File("MusicGame.mp3").toURI().toString());
-		mediaPlayer = new MediaPlayer(hit);
-		mediaPlayer.setVolume(.4);
-		mediaPlayer.play();
 
 		Rectangle rect = new Rectangle(400, 300, 20, 20);
-		rect.setFill(Color.GREEN);
+		rect.setFill(Color.BLUE);
 
 		int x = (int) (Math.random() * 750) + 1;
 		int y = (int) (Math.random() * 500) + 1;
@@ -85,6 +81,7 @@ public class SnakeMain extends Application {
         Hard.setEffect(new DropShadow());
         
 		anykey = new Label("Press P to play again");
+		anykey.setTextFill(Color.YELLOW);
 		anykey.setTranslateX(90);
 		anykey.setTranslateY(400);
 		anykey.setFont(Font.font("Arial", 30));
@@ -103,6 +100,11 @@ public class SnakeMain extends Application {
 				Easy.setVisible(false);
 				ea = true;
 				ha=false;
+
+				Media hit = new Media(new File("MusicGameOld.mp3").toURI().toString());
+				mediaPlayer = new MediaPlayer(hit);
+				mediaPlayer.setVolume(.4);
+				mediaPlayer.play();
 			}
 		});
 		pane.getChildren().add(Hard);
@@ -118,11 +120,17 @@ public class SnakeMain extends Application {
 				Easy.setVisible(false);
 				ha = true;
 				ea=false;
+
+				Media hit = new Media(new File("MusicGameOld.mp3").toURI().toString());
+				mediaPlayer = new MediaPlayer(hit);
+				mediaPlayer.setVolume(.4);
+				mediaPlayer.play();
 			}
 		});
 		loseLabel.setTranslateX(90);
 		loseLabel.setTranslateY(150);
 		loseLabel.setFont(Font.font("Arial", 90));
+		loseLabel.setTextFill(Color.BLUEVIOLET);
 		pane.getChildren().add(loseLabel);
 		loseLabel.setVisible(false);
 
@@ -306,6 +314,7 @@ public class SnakeMain extends Application {
 					}
 
 					score.setFont(new Font("Arial", 30));
+					score.setTextFill(Color.BURLYWOOD);
 					score.setText("Score: " + snake.getCounter());
 
 				}
