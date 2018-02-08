@@ -9,14 +9,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Snake {
-
+//instance vars
 	private ArrayList<Rectangle> snakePix;
 	private Rectangle body;
 	private Rectangle head;
 	private int cordX;
 	private int cordY;
 	private int counter;
-
+//constructors
 	public Snake(int pix, Rectangle bod) {
 		snakePix = new ArrayList<Rectangle>(pix);
 		body = bod;
@@ -27,7 +27,7 @@ public class Snake {
 		}
 
 	}
-
+//add head method to reset position and creation of the head
 	public void addHead() {
 
 		head.setX(400);
@@ -35,28 +35,29 @@ public class Snake {
 	SnakeMain.pane.getChildren().add(head);
 
 	}
+	//removes the head
 	public void removeHead() {
 
 		SnakeMain.pane.getChildren().remove(head);
 
 	}
-
+//adds the counter
 	public void addCounter() {
 	
 		counter++;
 
 	}
-
+//translates Y
 	public void moveY() {
 		head.setTranslateY(cordY);
 	}
-
+//translates X
 	public void moveX() {
 
 		head.setTranslateX(cordX);
 		
 	}
-
+//getter and setters
 	public ArrayList<Rectangle> getSnakePix() {
 		return snakePix;
 	}
