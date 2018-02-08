@@ -2,6 +2,10 @@ package GameProj;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -29,6 +33,7 @@ import javafx.stage.Stage;
 
 public class SnakeMain extends Application {
 
+	//initialize variables
 	private int addX = 0;
 	private int addY = 0;
 	public int c = 0;
@@ -50,8 +55,11 @@ public class SnakeMain extends Application {
 	Button Easy = new Button("Easy");
 	Button Hard = new Button("Hard");
 	final ImageView selectedImage = new ImageView();
-
+	Label l = new Label();
+	public FileSeralize file = new FileSeralize();
+	
 	@Override
+	//makes board
 	public void start(Stage primaryStage) throws Exception {
 
 		Line border1 = new Line(0.0, 0, 800, 0);
@@ -61,15 +69,18 @@ public class SnakeMain extends Application {
 
 
 		pane.getChildren().addAll(border1, border2, border3, border4);
-		Image image1 = new Image(new FileInputStream("C:\\Users\\ashwinneil\\git\\APCompSciA\\Untitled.jpg"));
+		//adds backdrop
+		Image image1 = new Image(new FileInputStream("Untitled.jpg"));
 		selectedImage.setImage(image1);
 		pane.getChildren().addAll(selectedImage);
-
-		Media hit = new Media(new File("MusicGame.mp3").toURI().toString());
+		//adds music
+		Media hit = new Media(new File("MusicGameOld.mp3").toURI().toString());
 		mediaPlayer = new MediaPlayer(hit);
+		//sets volume
 		mediaPlayer.setVolume(.4);
 		mediaPlayer.play();
-
+		
+		//new rectangles, one for the player the other for food with rand coordinates
 		Rectangle rect = new Rectangle(400, 300, 20, 20);
 		rect.setFill(Color.GREEN);
 
@@ -78,19 +89,47 @@ public class SnakeMain extends Application {
 
 		Rectangle rectFood = new Rectangle(x, y, 20, 20);
 		rectFood.setFill(Color.YELLOW);
+		
+		//new snake class with adding the head
 		Snake snake = new Snake(3, rect);
 		snake.addHead();
+		//new food class
 		Food food = new Food(rectFood, pane);
+		
+		File f = new File(System.getenv("APPDATA")+ "\\ServerTest\\highscore.ser");
+
+        f.getParentFile().mkdirs(); 
+        try {
+			f.createNewFile();
+		} catch (IOException e) {
+			System.out.println("Already Exists");
+			
+		}
+		
+		File f1 = new File(System.getenv("APPDATA")+ "\\ServerTest\\highscoreEasy.ser");
+
+        f1.getParentFile().mkdirs(); 
+        try {
+			f1.createNewFile();
+		} catch (IOException e) {
+			System.out.println("Already Exists");
+			
+		} 
+		
+		//sets a shadow effect to the button
         Easy.setEffect(new DropShadow());
         Hard.setEffect(new DropShadow());
         
+        //reset label and translations
 		anykey = new Label("Press P to play again");
-		anykey.setTranslateX(90);
+		anykey.setTranslateX(275);
 		anykey.setTranslateY(400);
 		anykey.setFont(Font.font("Arial", 30));
 		anykey.setVisible(false);
+		//adds to pane
 		pane.getChildren().add(anykey);
 		pane.getChildren().add(Easy);
+		//translates easy button and sets action to it
 		Easy.setTranslateX(240);
 		Easy.setTranslateY(150);
 		Easy.setScaleX(3);
@@ -105,6 +144,7 @@ public class SnakeMain extends Application {
 				ha=false;
 			}
 		});
+		//adds hard button
 		pane.getChildren().add(Hard);
 		Hard.setTranslateX(533);
 		Hard.setTranslateY(150);
@@ -117,17 +157,23 @@ public class SnakeMain extends Application {
 				Hard.setVisible(false);
 				Easy.setVisible(false);
 				ha = true;
-				ea=false;
+				ea = false;
 			}
 		});
-		loseLabel.setTranslateX(90);
+		//Translates label and adds label into pane
+		loseLabel.setTranslateX(150);
 		loseLabel.setTranslateY(150);
 		loseLabel.setFont(Font.font("Arial", 90));
 		pane.getChildren().add(loseLabel);
 		loseLabel.setVisible(false);
-
+	
+		
+		
+		
+		//new scene class
 		Scene scene = new Scene(pane, 800, 600);
 
+		//all key press listeners
 		scene.setOnKeyPressed(e -> {
 
 			if (e.getCode() == KeyCode.D) {
@@ -178,6 +224,7 @@ public class SnakeMain extends Application {
 				moveUp = false;
 				moveDown = true;
 			}
+			//Resets everything when pressing P
 			if (e.getCode() == KeyCode.P) {
 
 				if (restartBool) {
@@ -243,10 +290,48 @@ public class SnakeMain extends Application {
 
 		});
 
+		//new animation timer
 		animate = new AnimationTimer() {
 
+			//movement of the head
 			@Override
 			public void handle(long now) {
+				
+				if(ha) {
+				
+			        
+			        try {
+				         FileInputStream fileIn = new FileInputStream(System.getenv("APPDATA")+ "\\ServerTest\\highscore.ser");
+				         ObjectInputStream in = new ObjectInputStream(fileIn);
+				         file = (FileSeralize) in.readObject();
+				         in.close();
+				         fileIn.close();
+				      } catch (IOException i) {
+				         file.HighscoreLocal = 0;
+				      } catch (ClassNotFoundException c) {
+				         System.out.println("Class not found");
+				         c.printStackTrace();
+				      }
+			       
+				} else if(ea){	        
+					
+			       
+			        try {
+				         FileInputStream fileIn = new FileInputStream(
+				        		 System.getenv("APPDATA")+ "\\ServerTest\\highscoreEasy.ser");
+				         ObjectInputStream in = new ObjectInputStream(fileIn);
+				         file = (FileSeralize) in.readObject();
+				         in.close();
+				         fileIn.close();
+				      } catch (IOException i) {
+				         file.HighscoreLocalEasy = 0;
+				      } catch (ClassNotFoundException c) {
+				         System.out.println("Class not found");
+				         c.printStackTrace();
+				      }
+			        
+				}
+				
 				if (ea) {
 					if (moveRight) {
 						addX += multX;
@@ -292,6 +377,7 @@ public class SnakeMain extends Application {
 					}
 				}
 
+				//collision wiht the food
 				if (snake.getHead().getBoundsInParent().intersects(food.getPickup().getBoundsInParent()) ) {
 
 					int x = (int) (Math.random() * 750) + 1;
@@ -305,40 +391,75 @@ public class SnakeMain extends Application {
 						multY *= 1.25;
 					}
 
-					score.setFont(new Font("Arial", 30));
-					score.setText("Score: " + snake.getCounter());
+					if(snake.getCounter() >= file.HighscoreLocal) {
+						file.HighscoreLocal = snake.getCounter();
+					}
 
+					score.setFont(new Font("Arial", 15));
+					score.setText("Score: " + snake.getCounter());
+					l.setText("Highscore: " + file.HighscoreLocal);
+					l.setTranslateX(75);
+					l.setFont(new Font("Arial", 15));
+		
 				}
-			
+				//collision with the border and results of doing so
 				if ((snake.getHead().getBoundsInParent().intersects(border1.getBoundsInParent())
 						|| snake.getHead().getBoundsInParent().intersects(border2.getBoundsInParent())
 						|| snake.getHead().getBoundsInParent().intersects(border3.getBoundsInParent())
-						|| snake.getHead().getBoundsInParent().intersects(border4.getBoundsInParent()))&& (ea||ha)) {
+						|| snake.getHead().getBoundsInParent().intersects(border4.getBoundsInParent())
+						)&& (ea||ha)) {
 					snake.removeHead();
 					mediaPlayer.setVolume(0);
 					score.setVisible(false);
 					pane.getChildren().remove(food.getPickup());
-					loseLabel.setText("You LOSE!!!" + "\n    Score: " + snake.getCounter());
+					loseLabel.setText("You LOSE!!!!" + "\n    Score: " + snake.getCounter());
 					loseLabel.setVisible(true);
 					anykey.setVisible(true);
-					animate.stop();
 					restartBool = true;
 					ea=false;
 					ha=false;
+
+					if(snake.getCounter() >= file.HighscoreLocal && ha) {
+					try {
+				         FileOutputStream fileOut = new FileOutputStream(
+				        		 System.getenv("APPDATA")+ "\\ServerTest\\highscore.ser");
+				         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+				         out.writeObject(file);
+				         out.close();
+				         fileOut.close();
+				      } catch (IOException i) {
+				         i.printStackTrace();
+				      }
+					}
+					else if(snake.getCounter() >= file.HighscoreLocalEasy && ea) {
+						try {
+					         FileOutputStream fileOut = new FileOutputStream(
+					        		 System.getenv("APPDATA")+ "\\ServerTest\\highscoreEasy.ser");
+					         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+					         out.writeObject(file);
+					         out.close();
+					         fileOut.close();
+					      } catch (IOException i) {
+					         i.printStackTrace();
+					      }
+						}
+					animate.stop();
 				}
 				
 			}
 			
 		};
+		//starts animation
 		animate.start();
+		//adds core to pane
+		pane.getChildren().addAll(score, l);
 
-		pane.getChildren().add(score);
-
+		//scene added 
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
 	}
-
+	//launches
 	public static void main(String[] args) {
 		launch(args);
 	}
