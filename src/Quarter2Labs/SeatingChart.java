@@ -29,9 +29,14 @@ public class SeatingChart
    { 
       //Insert code here to create the constructor.
 	   seats = new Student[rows][cols];
-	   for(int i = 0; i < seats.length; i++) {
-		   for(int j = 0; j < seats[0].length; j++) {
-			   seats[i][j] = studentList.get(j+i);
+	   int k = 0;
+	   for(int i = 0; i < seats[0].length; i++) {
+		   for(int j = 0; j < seats.length; j++) {
+			   if(k == studentList.size()) {
+				   break;
+			   }
+			   seats[j][i] = studentList.get(k);
+			   k++;
 		   }
 	   }
 
@@ -49,14 +54,23 @@ public class SeatingChart
    */
    public int removeAbsentStudents(int allowedAbsences)
    {
-	  for(int i = 0; i < seats.length; i++) {
-		  for (int j = 0; j < seats[0].length; j++) {
-			  if(seats[i][j].getAbsenceCount() == allowedAbsences) {
-				  seats[i][j].equals(null);
+	   int count = 0;
+	  for(int i = 0; i < seats[0].length; i++) {
+		  for (int j = 0; j < seats.length; j++) {
+			  try {
+			  if(seats[j][i].equals(null)) {
+				  seats[j][i] = null;
+			  }
+			  else if(seats[j][i].getAbsenceCount() > allowedAbsences) {
+				  seats[j][i] = null;
+				   count++;
+			  }
+			  }catch(Exception e) {
+				  continue;
 			  }
 		  }
 	  }
-      return 0; //here so the program compiles.
+      return count; //here so the program compiles.
    }
    
    public String toString()

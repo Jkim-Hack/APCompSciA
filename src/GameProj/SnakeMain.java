@@ -6,6 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -37,8 +40,8 @@ public class SnakeMain extends Application {
 	private int addX = 0;
 	private int addY = 0;
 	public int c = 0;
-	private double multX = 5;
-	private double multY = 5;
+	private double multX = 10;
+	private double multY = 10;
 	public static Pane pane = new Pane();
 	public static boolean moveRight = false;
 	public static boolean moveLeft = false;
@@ -81,9 +84,8 @@ public class SnakeMain extends Application {
 		mediaPlayer.play();
 		
 		//new rectangles, one for the player the other for food with rand coordinates
-		Rectangle rect = new Rectangle(400, 300, 20, 20);
+		Rectangle rect = new Rectangle(20, 20);
 		rect.setFill(Color.GREEN);
-
 		int x = (int) (Math.random() * 750) + 1;
 		int y = (int) (Math.random() * 500) + 1;
 
@@ -106,16 +108,6 @@ public class SnakeMain extends Application {
 			
 		}
 		
-		File f1 = new File(System.getenv("APPDATA")+ "\\ServerTest\\highscoreEasy.ser");
-
-        f1.getParentFile().mkdirs(); 
-        try {
-			f1.createNewFile();
-		} catch (IOException e) {
-			System.out.println("Already Exists");
-			
-		} 
-		
 		//sets a shadow effect to the button
         Easy.setEffect(new DropShadow());
         Hard.setEffect(new DropShadow());
@@ -135,15 +127,15 @@ public class SnakeMain extends Application {
 		Easy.setScaleX(3);
 		Easy.setScaleY(3);
 		Easy.setStyle("-fx-background-color: #00ff00; ");
-		Easy.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				Hard.setVisible(false);
-				Easy.setVisible(false);
-				ea = true;
-				ha=false;
-			}
+		Easy.setOnAction((ActionEvent event) ->{
+			
+			Hard.setVisible(false);
+			Easy.setVisible(false);
+			ea = true;
+			ha=false;
+			
 		});
+		
 		//adds hard button
 		pane.getChildren().add(Hard);
 		Hard.setTranslateX(533);
@@ -151,15 +143,14 @@ public class SnakeMain extends Application {
 		Hard.setScaleX(3);
 		Hard.setScaleY(3);
 		Hard.setStyle("-fx-background-color: #FF00FF; ");
-		Hard.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
+		Hard.setOnAction((ActionEvent event) -> {
+			
 				Hard.setVisible(false);
 				Easy.setVisible(false);
 				ha = true;
 				ea = false;
-			}
 		});
+		
 		//Translates label and adds label into pane
 		loseLabel.setTranslateX(150);
 		loseLabel.setTranslateY(150);
@@ -173,6 +164,62 @@ public class SnakeMain extends Application {
 		//new scene class
 		Scene scene = new Scene(pane, 800, 600);
 
+		Task<Void> endgame = new Task<Void>() {
+
+			@Override
+			protected Void call() throws Exception {
+				
+				
+				snake.removeHead();
+				System.out.println("good");
+				mediaPlayer.setVolume(0);
+				score.setVisible(false);
+				pane.getChildren().remove(food.getPickup());
+				loseLabel.setText("You LOSE!!!!" + "\n    Score: " + snake.getCounter());
+				loseLabel.setVisible(true);
+				anykey.setVisible(true);
+				restartBool = true;
+				/*
+				System.out.println(file.HighscoreLocal);
+				System.out.println("good");
+
+				if(snake.getCounter() >= file.HighscoreLocal && ha) {
+				try {
+			         FileOutputStream fileOut = new FileOutputStream(
+			        		 System.getenv("APPDATA")+ "\\ServerTest\\highscore.ser");
+			         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			         out.writeObject(file);
+			         out.close();
+			         fileOut.close();
+			      } catch (IOException i) {
+			         i.printStackTrace();
+			      }
+				}
+				else if(snake.getCounter() >= file.HighscoreLocalEasy && ea) {
+					try {
+				         FileOutputStream fileOut = new FileOutputStream(
+				        		 System.getenv("APPDATA")+ "\\ServerTest\\highscore.ser");
+				         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+				         out.writeObject(file);
+				         out.close();
+				         fileOut.close();
+				      } catch (IOException i) {
+				         i.printStackTrace();
+				      }
+					}
+					*/
+				System.out.println("all systems go");
+				ea=false;
+				ha=false;
+				return null;
+			}
+				
+			};
+		
+		
+		
+		
+		
 		//all key press listeners
 		scene.setOnKeyPressed(e -> {
 
@@ -225,8 +272,13 @@ public class SnakeMain extends Application {
 				moveDown = true;
 			}
 			//Resets everything when pressing P
-			if (e.getCode() == KeyCode.P) {
+			if (e.getCode() == KeyCode.P && ea == false && ha == false) {
 
+				moveRight = false;
+				moveLeft = false;
+				moveUp = false;
+				moveDown = false;
+				e.consume();
 				if (restartBool) {
 					Easy.setTranslateX(240);
 					Easy.setTranslateY(150);
@@ -237,9 +289,9 @@ public class SnakeMain extends Application {
 					
 					Easy.setVisible(true);
 					
-					Easy.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent e) {
+					Easy.setOnAction((ActionEvent event) -> {
+						
+						
 							Easy.setVisible(false);
 							Hard.setVisible(false);
 							ea=true;
@@ -256,30 +308,30 @@ public class SnakeMain extends Application {
 							score.setText("Score: " + snake.getCounter());
 							score.setVisible(true);
 							animate.start();
-						}
+						
 					});
 					Hard.setVisible(true);
-					Hard.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent e) {
+					Hard.setOnAction((ActionEvent event) -> {
+						
 							Hard.setVisible(false);
+							Hard.setDisable(true);
 							Easy.setVisible(false);
 							ha=true;
 							ea=false;
-							snake.addHead();
 							snake.setCordX(0);
 							snake.setCordY(0);
 							addX = 0;
 							addY = 0;
-							multX = 5;
-							multY = 5;
+							multX = 10;
+							multY = 10;
 							
 							pane.getChildren().add(food.getPickup());
 							snake.setCounter(0);
 							score.setText("Score: " + snake.getCounter());
 							score.setVisible(true);
+							snake.addHead();
 							animate.start();
-						}
+						
 					});
 					
 						
@@ -297,8 +349,6 @@ public class SnakeMain extends Application {
 			@Override
 			public void handle(long now) {
 				
-				if(ha) {
-				
 			        
 			        try {
 				         FileInputStream fileIn = new FileInputStream(System.getenv("APPDATA")+ "\\ServerTest\\highscore.ser");
@@ -307,30 +357,12 @@ public class SnakeMain extends Application {
 				         in.close();
 				         fileIn.close();
 				      } catch (IOException i) {
-				         file.HighscoreLocal = 0;
+				         System.out.println("LUL");
 				      } catch (ClassNotFoundException c) {
 				         System.out.println("Class not found");
 				         c.printStackTrace();
 				      }
-			       
-				} else if(ea){	        
-					
-			       
-			        try {
-				         FileInputStream fileIn = new FileInputStream(
-				        		 System.getenv("APPDATA")+ "\\ServerTest\\highscoreEasy.ser");
-				         ObjectInputStream in = new ObjectInputStream(fileIn);
-				         file = (FileSeralize) in.readObject();
-				         in.close();
-				         fileIn.close();
-				      } catch (IOException i) {
-				         file.HighscoreLocalEasy = 0;
-				      } catch (ClassNotFoundException c) {
-				         System.out.println("Class not found");
-				         c.printStackTrace();
-				      }
-			        
-				}
+			      
 				
 				if (ea) {
 					if (moveRight) {
@@ -356,28 +388,28 @@ public class SnakeMain extends Application {
 				}
 				if (ha) {
 					if (moveRight) {
-						addX += multX + 5;
+						addX += multX;
 						snake.setCordX(addX);
 						snake.moveX();
 					}
 					if (moveLeft) {
-						addX -= 10;
+						addX -= multX;
 						snake.setCordX(addX);
 						snake.moveX();
 					}
 					if (moveUp) {
-						addY -= 10;
+						addY -= multY;
 						snake.setCordY(addY);
 						snake.moveY();
 					}
 					if (moveDown) {
-						addY += multY + 5;
+						addY += multY;
 						snake.setCordY(addY);
 						snake.moveY();
 					}
 				}
 
-				//collision wiht the food
+				//collision with the food
 				if (snake.getHead().getBoundsInParent().intersects(food.getPickup().getBoundsInParent()) ) {
 
 					int x = (int) (Math.random() * 750) + 1;
@@ -407,43 +439,13 @@ public class SnakeMain extends Application {
 						|| snake.getHead().getBoundsInParent().intersects(border2.getBoundsInParent())
 						|| snake.getHead().getBoundsInParent().intersects(border3.getBoundsInParent())
 						|| snake.getHead().getBoundsInParent().intersects(border4.getBoundsInParent())
-						)&& (ea||ha)) {
-					snake.removeHead();
-					mediaPlayer.setVolume(0);
-					score.setVisible(false);
-					pane.getChildren().remove(food.getPickup());
-					loseLabel.setText("You LOSE!!!!" + "\n    Score: " + snake.getCounter());
-					loseLabel.setVisible(true);
-					anykey.setVisible(true);
-					restartBool = true;
-					ea=false;
-					ha=false;
-
-					if(snake.getCounter() >= file.HighscoreLocal && ha) {
-					try {
-				         FileOutputStream fileOut = new FileOutputStream(
-				        		 System.getenv("APPDATA")+ "\\ServerTest\\highscore.ser");
-				         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-				         out.writeObject(file);
-				         out.close();
-				         fileOut.close();
-				      } catch (IOException i) {
-				         i.printStackTrace();
-				      }
-					}
-					else if(snake.getCounter() >= file.HighscoreLocalEasy && ea) {
-						try {
-					         FileOutputStream fileOut = new FileOutputStream(
-					        		 System.getenv("APPDATA")+ "\\ServerTest\\highscoreEasy.ser");
-					         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-					         out.writeObject(file);
-					         out.close();
-					         fileOut.close();
-					      } catch (IOException i) {
-					         i.printStackTrace();
-					      }
-						}
+						)) {
+					
 					animate.stop();
+					Thread t = new Thread(endgame);
+					t.setDaemon(true);
+					t.start();
+					
 				}
 				
 			}
@@ -451,6 +453,7 @@ public class SnakeMain extends Application {
 		};
 		//starts animation
 		animate.start();
+		
 		//adds core to pane
 		pane.getChildren().addAll(score, l);
 

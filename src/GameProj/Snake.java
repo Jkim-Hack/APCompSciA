@@ -19,9 +19,12 @@ public class Snake {
 //constructors
 	public Snake(int pix, Rectangle bod) {
 		snakePix = new ArrayList<Rectangle>(pix);
-		body = bod;
 		head = bod;
 		counter = 0;
+		
+		head.setX(400);
+		head.setY(300);
+		
 		for (int i = 0; i < pix; i++) {
 			snakePix.add(i, bod);
 		}
@@ -29,15 +32,15 @@ public class Snake {
 	}
 //add head method to reset position and creation of the head
 	public void addHead() {
-
-		head.setX(400);
-		head.setY(300);
+		
 	SnakeMain.pane.getChildren().add(head);
 
 	}
 	//removes the head
 	public void removeHead() {
 
+		head.setX(400);
+		head.setY(300);
 		SnakeMain.pane.getChildren().remove(head);
 
 	}
