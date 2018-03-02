@@ -76,6 +76,10 @@ public class SnakeMain extends Application {
 		Image image1 = new Image(new FileInputStream("Untitled.jpg"));
 		selectedImage.setImage(image1);
 		pane.getChildren().addAll(selectedImage);
+<<<<<<< HEAD
+
+
+=======
 		//adds music
 		Media hit = new Media(new File("MusicGameOld.mp3").toURI().toString());
 		mediaPlayer = new MediaPlayer(hit);
@@ -84,8 +88,15 @@ public class SnakeMain extends Application {
 		mediaPlayer.play();
 		
 		//new rectangles, one for the player the other for food with rand coordinates
+<<<<<<< HEAD
 		Rectangle rect = new Rectangle(20, 20);
 		rect.setFill(Color.GREEN);
+=======
+>>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
+		Rectangle rect = new Rectangle(400, 300, 20, 20);
+		rect.setFill(Color.BLUE);
+
+>>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
 		int x = (int) (Math.random() * 750) + 1;
 		int y = (int) (Math.random() * 500) + 1;
 
@@ -114,7 +125,12 @@ public class SnakeMain extends Application {
         
         //reset label and translations
 		anykey = new Label("Press P to play again");
+<<<<<<< HEAD
+		anykey.setTextFill(Color.YELLOW);
+		anykey.setTranslateX(90);
+=======
 		anykey.setTranslateX(275);
+>>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
 		anykey.setTranslateY(400);
 		anykey.setFont(Font.font("Arial", 30));
 		anykey.setVisible(false);
@@ -127,6 +143,7 @@ public class SnakeMain extends Application {
 		Easy.setScaleX(3);
 		Easy.setScaleY(3);
 		Easy.setStyle("-fx-background-color: #00ff00; ");
+<<<<<<< HEAD
 		Easy.setOnAction((ActionEvent event) ->{
 			
 			Hard.setVisible(false);
@@ -134,6 +151,21 @@ public class SnakeMain extends Application {
 			ea = true;
 			ha=false;
 			
+=======
+		Easy.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				Hard.setVisible(false);
+				Easy.setVisible(false);
+				ea = true;
+				ha=false;
+
+				Media hit = new Media(new File("MusicGameOld.mp3").toURI().toString());
+				mediaPlayer = new MediaPlayer(hit);
+				mediaPlayer.setVolume(.4);
+				mediaPlayer.play();
+			}
+>>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
 		});
 		
 		//adds hard button
@@ -148,13 +180,27 @@ public class SnakeMain extends Application {
 				Hard.setVisible(false);
 				Easy.setVisible(false);
 				ha = true;
+<<<<<<< HEAD
+				ea=false;
+
+				Media hit = new Media(new File("MusicGameOld.mp3").toURI().toString());
+				mediaPlayer = new MediaPlayer(hit);
+				mediaPlayer.setVolume(.4);
+				mediaPlayer.play();
+=======
 				ea = false;
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
+			}
+>>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
 		});
 		
 		//Translates label and adds label into pane
 		loseLabel.setTranslateX(150);
 		loseLabel.setTranslateY(150);
 		loseLabel.setFont(Font.font("Arial", 90));
+		loseLabel.setTextFill(Color.BLUEVIOLET);
 		pane.getChildren().add(loseLabel);
 		loseLabel.setVisible(false);
 	
@@ -423,9 +469,15 @@ public class SnakeMain extends Application {
 						multY *= 1.25;
 					}
 
+<<<<<<< HEAD
+					score.setFont(new Font("Arial", 30));
+					score.setTextFill(Color.BURLYWOOD);
+					score.setText("Score: " + snake.getCounter());
+=======
 					if(snake.getCounter() >= file.HighscoreLocal) {
 						file.HighscoreLocal = snake.getCounter();
 					}
+>>>>>>> branch 'master' of https://github.com/Jkim-Hack/APCompSciA.git
 
 					score.setFont(new Font("Arial", 15));
 					score.setText("Score: " + snake.getCounter());
